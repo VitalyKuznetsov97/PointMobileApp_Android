@@ -5,4 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorViolet">#8747E7</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorDescriptionGrey">#B2B0BD</color>
+    <color name="colorTeal">#337AFFFF</color>
+    <color name="colorIndicatorPurple">#9492F2</color>
+    <color name="colorBlackField">#413C58</color>
 </resources>
