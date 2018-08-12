@@ -1,14 +1,17 @@
 package com.vitaly_kuznetsov.point;
 
 import android.content.Intent;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity implements SignUpOneFragment.OnFragmentInteractionListener{
 
     private static int count = 0;
 
@@ -43,13 +46,28 @@ public class SignUpActivity extends AppCompatActivity {
                 }
                 else if (count == 2){
                     indicatorTwo.setActivated(!indicatorTwo.isActivated());
-                }
-                else if (count == 3){
-                    count = 0;
+                    count = -1;
                 }
                 count++;
             }
         });
 
+        TextView logInTextView = findViewById(R.id.already_have_text_view);
+        logInTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onFragmentInteraction();
+            }
+        });
+    }
+
+    @Override
+    public void onFragmentInteraction() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        SignUpOneFragment fragment = SignUpOneFragment.newInstance("hallow", "zabl");
+        fragmentTransaction.add(R.id.constraint_layout_2, fragment);
+        fragmentTransaction.commit();
     }
 }

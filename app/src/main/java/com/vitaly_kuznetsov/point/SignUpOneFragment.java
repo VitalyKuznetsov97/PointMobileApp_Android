@@ -1,9 +1,9 @@
 package com.vitaly_kuznetsov.point;
 
+import android.app.Fragment;
+import android.app.ListFragment;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +17,7 @@ import android.view.ViewGroup;
  * Use the {@link SignUpOneFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SignUpOneFragment extends Fragment {
+public class SignUpOneFragment extends ListFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -66,21 +66,13 @@ public class SignUpOneFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_sign_up_one, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
+        try {
             mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -102,6 +94,6 @@ public class SignUpOneFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction();
     }
 }
