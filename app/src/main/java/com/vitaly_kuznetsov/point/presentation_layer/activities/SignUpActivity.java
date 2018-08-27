@@ -1,19 +1,26 @@
-package com.vitaly_kuznetsov.point;
+package com.vitaly_kuznetsov.point.presentation_layer.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.ToggleButton;
+
+import com.vitaly_kuznetsov.point.R;
+import com.vitaly_kuznetsov.point.presentation_layer.sign_up_fragments.SignUpOneFragment;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpOneFragment.OnFragmentInteractionListener{
 
-    private static int count = 0;
+    private static int count;
+
+    static {
+        count = 0;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +40,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpOneFragme
         final ImageButton indicatorZero = findViewById(R.id.indicator_0);
         final ImageButton indicatorOne = findViewById(R.id.indicator_1);
         final ImageButton indicatorTwo = findViewById(R.id.indicator_2);
-        Button button = findViewById(R.id.sign_up_button_1);
+        Button button = findViewById(R.id.next_button);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,23 +58,9 @@ public class SignUpActivity extends AppCompatActivity implements SignUpOneFragme
                 count++;
             }
         });
-
-        TextView logInTextView = findViewById(R.id.already_have_text_view);
-        logInTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onFragmentInteraction();
-            }
-        });
     }
 
     @Override
     public void onFragmentInteraction() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        SignUpOneFragment fragment = SignUpOneFragment.newInstance("hallow", "zabl");
-        fragmentTransaction.add(R.id.constraint_layout_2, fragment);
-        fragmentTransaction.commit();
     }
 }

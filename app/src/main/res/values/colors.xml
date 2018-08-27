@@ -9,4 +9,6 @@
     <color name="colorTeal">#337AFFFF</color>
     <color name="colorIndicatorPurple">#9492F2</color>
     <color name="colorBlackField">#413C58</color>
+    <color name="colorErrorPink">#FC96AF</color>
+    <color name="colorControlNormal">#68647C</color>
 </resources>

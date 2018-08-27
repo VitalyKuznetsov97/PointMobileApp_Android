@@ -7,78 +7,92 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline_0"
-        android:layout_width="wrap_content"
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.15633"
 
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:id="@+id/space_0"
+        android:alpha="0"
 
-        app:layout_constraintGuide_percent="0.162" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline_1"
-        android:layout_width="wrap_content"
-
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-
-        app:layout_constraintGuide_percent="0.8703" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/edit_text_0"/>
 
     <EditText
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.15"
 
         android:fontFamily="@font/roboto_light"
         android:id="@+id/edit_text_0"
         android:hint="@string/name_hint"
         android:textSize="14sp"
         android:textColorHint="@color/colorIndicatorPurple"
+        android:gravity="start"
+        android:theme="@style/EditTextName"
 
+        android:layout_marginEnd="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline_0"
-        app:layout_constraintBottom_toTopOf="@id/gender_text_view"
+        app:layout_constraintTop_toBottomOf="@id/space_0"
+        app:layout_constraintBottom_toTopOf="@id/space_1"
         android:inputType="text" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.10975"
+
+        android:id="@+id/space_1"
+        android:alpha="0"
+
+        app:layout_constraintBottom_toTopOf="@id/gender_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_0"/>
 
     <android.support.v7.widget.AppCompatTextView
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.118"
 
         android:id="@+id/gender_text_view"
         android:text="@string/gender_text"
         android:textColor="@color/colorIndicatorPurple"
         android:fontFamily="@font/roboto_light"
         app:autoSizeTextType="uniform"
-        app:autoSizeMinTextSize="14sp"
+        app:autoSizeMinTextSize="12sp"
         app:autoSizeMaxTextSize="14sp"
         app:autoSizeStepGranularity="1sp"
         android:gravity="start"
 
-        android:layout_marginTop="40dp"
         app:layout_constraintBottom_toTopOf="@id/linear_layout_0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_0" />
+        app:layout_constraintTop_toBottomOf="@id/space_1" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.12422"
 
         android:id="@+id/linear_layout_0"
         android:orientation="horizontal"
 
-        app:layout_constraintBottom_toBottomOf="@id/date_of_birth_text_view"
+        app:layout_constraintBottom_toTopOf="@id/space_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/gender_text_view">
 
-        <Button
+        <ToggleButton
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
 
             android:textColor="@color/colorDescriptionGrey"
-            android:text="@string/male_text"
+            android:textOn="@string/male_text"
+            android:textOff="@string/male_text"
             android:fontFamily="@font/roboto_regular"
             android:textSize="17sp"
             android:textAppearance="@style/TextAppearance.AppCompat"
@@ -87,17 +101,18 @@
             android:layout_marginEnd="15dp"
             android:id="@+id/gender_male_button"
             android:layout_weight="1"
-            android:background="@drawable/field_template"
+            android:background="@drawable/field_template_custom"
             android:layout_gravity="start"
             tools:ignore="ButtonStyle" />
 
 
-        <Button
+        <ToggleButton
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
 
             android:textColor="@color/colorDescriptionGrey"
-            android:text="@string/female_text"
+            android:textOn="@string/female_text"
+            android:textOff="@string/female_text"
             android:fontFamily="@font/roboto_regular"
             android:textSize="17sp"
             android:textAppearance="@style/TextAppearance.AppCompat"
@@ -106,49 +121,71 @@
             android:layout_marginEnd="18dp"
             android:id="@+id/gender_female_button"
             android:layout_weight="1"
-            android:background="@drawable/field_template"
+            android:background="@drawable/field_template_custom"
             android:layout_gravity="end"
             tools:ignore="ButtonStyle" />
 
     </LinearLayout>
 
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.10869"
+
+        android:id="@+id/space_2"
+
+        app:layout_constraintBottom_toTopOf="@id/date_of_birth_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear_layout_0"/>
+
     <android.support.v7.widget.AppCompatTextView
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.1024"
 
         android:id="@+id/date_of_birth_text_view"
         android:text="@string/date_of_birth_text"
         android:textColor="@color/colorIndicatorPurple"
         android:fontFamily="@font/roboto_light"
         app:autoSizeTextType="uniform"
-        app:autoSizeMinTextSize="14sp"
+        app:autoSizeMinTextSize="12sp"
         app:autoSizeMaxTextSize="14sp"
         app:autoSizeStepGranularity="1sp"
         android:gravity="start"
 
-        android:layout_marginTop="40dp"
         app:layout_constraintBottom_toTopOf="@id/calendar_text_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear_layout_0" />
+        app:layout_constraintTop_toBottomOf="@id/space_2" />
 
     <android.support.v7.widget.AppCompatTextView
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.13043"
 
         android:id="@+id/calendar_text_view"
         android:text="@string/hint_calendar_value"
         android:textColor="@color/colorDescriptionGrey"
         android:fontFamily="@font/roboto_regular"
         app:autoSizeTextType="uniform"
-        app:autoSizeMinTextSize="18sp"
+        app:autoSizeMinTextSize="14sp"
         app:autoSizeMaxTextSize="18sp"
         app:autoSizeStepGranularity="1sp"
         android:gravity="center"
 
-        app:layout_constraintBottom_toBottomOf="@id/guideline_1"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/date_of_birth_text_view" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_0"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        app:layout_constraintGuide_percent="0.8703" />
 
 </android.support.constraint.ConstraintLayout>
