@@ -9,7 +9,7 @@
     <!-- activity_sign_up -->
     <string name="already_have">Already have an account? Log in</string>
     <string name="go_back_icon">Go back.</string>
-    <string name="error_string">Please fill all the fields</string>
+    <string name="error_string_0">Please fill all the fields</string>
 
     <!-- fragment_sign_up_one -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -18,10 +18,32 @@
     <string name="male_text">Male</string>
     <string name="female_text">Female</string>
     <string name="date_of_birth_text">Date of birth</string>
-    <string name="hint_calendar_value">01.01.1920</string>
+    <string name="hint_calendar_value">01.01.1920 </string>
     <string name="calendar_carete_description">calendar_carete</string>
     <string name="next_text_view">Next</string>
 
     <!-- fragment_sign_up_two -->
+    <string name="gender_text_view_all">All genders</string>
+    <string name="age_text_view">Age</string>
+    <string name="age_group_zero">18–22</string>
+    <string name="age_group_one">23–27</string>
+    <string name="age_group_two">28–35</string>
+    <string name="age_group_three">36–45</string>
+    <string name="age_group_four">46+</string>
+    <string name="age_group_five">All ages</string>
+    <string name="calendar_view_description">Choose your date of birth.</string>
+    <string name="skip_text_view">Skip</string>
+    <string name="get_a_verification_code_button">Get a verification code</string>
+    <string name="phone_number_hint">Phone number</string>
+    <string name="privacy_policy_textview">I have read and agree to "\n"the Privacy Policy</string>
+    <string name="error_string_1">Incorrect code</string>
+    <string name="log_in_textview">Log In</string>
+    <string name="description_2">Sign in with your phone number</string>
+    <string name="do_not_have">Do not have an account? Sign Up</string>
+    <string name="try_again_textview">Try again</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
 </resources>

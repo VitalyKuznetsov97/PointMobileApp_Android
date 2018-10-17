@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
+    <color name="colorSkipGrey">#DAD9E0</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorViolet">#8747E7</color>
+    <color name="colorDarkViolet">#5a3e84</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorPressedGrey">#fafafa</color>
     <color name="colorDescriptionGrey">#B2B0BD</color>
     <color name="colorTeal">#337AFFFF</color>
     <color name="colorIndicatorPurple">#9492F2</color>
     <color name="colorBlackField">#413C58</color>
+    <color name="colorFieldPressed">#706e79</color>
     <color name="colorErrorPink">#FC96AF</color>
     <color name="colorControlNormal">#68647C</color>
 </resources>

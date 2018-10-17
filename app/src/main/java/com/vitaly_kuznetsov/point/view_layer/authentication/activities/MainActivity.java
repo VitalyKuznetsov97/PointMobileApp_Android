@@ -1,4 +1,4 @@
-package com.vitaly_kuznetsov.point.presentation_layer.activities;
+package com.vitaly_kuznetsov.point.view_layer.authentication.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        Button logInButton = findViewById(R.id.log_in_button_0);
+        logInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
