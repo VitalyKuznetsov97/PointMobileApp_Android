@@ -1,4 +1,4 @@
-package com.vitaly_kuznetsov.point.view_layer.home_screen.activities;
+package com.vitaly_kuznetsov.point.home;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

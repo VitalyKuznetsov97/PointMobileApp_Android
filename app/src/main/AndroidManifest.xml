@@ -10,8 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view_layer.authentication.activities.MainActivity"
-            android:screenOrientation="portrait">
+            android:name=".launch_app.view_layer.MainActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,14 +20,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view_layer.authentication.activities.SignUpActivity"
-            android:screenOrientation="portrait" />
+            android:name=".authentication.view_layer.activities.SignUpActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"/>
         <activity
-            android:name=".view_layer.authentication.activities.LogInActivity"
-            android:screenOrientation="portrait" />
+            android:name=".authentication.view_layer.activities.LogInActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"/>
         <activity
-            android:name=".view_layer.authentication.activities.HomeActivity"
-            android:label="@string/title_activity_home"></activity>
+            android:name=".home.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

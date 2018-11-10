@@ -10,7 +10,16 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
 
-    tools:context=".view_layer.authentication.activities.SignUpActivity">
+    tools:context=".authentication.view_layer.activities.SignUpActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/wait_for_touch_view"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_0"
@@ -75,24 +84,70 @@
 
         app:layout_constraintGuide_percent="0.93853" />
 
-    <android.support.v7.widget.AppCompatTextView
+    <android.support.v7.widget.AppCompatImageView
         android:layout_width="0dp"
         android:layout_height="0dp"
-
         android:background="@color/colorTeal"
-        android:id="@+id/already_have_text_view"
-        android:text="@string/already_have"
-        android:fontFamily="@font/roboto_light_italic"
-        app:autoSizeTextType="uniform"
-        app:autoSizeMinTextSize="14sp"
-        app:autoSizeMaxTextSize="36sp"
-        app:autoSizeStepGranularity="22sp"
-        android:gravity="center"
+
+        android:id="@+id/background_image_view"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_4" />
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_4">
+
+    </android.support.v7.widget.AppCompatImageView>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:id="@+id/constraint_layout_small"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline_0"
+        app:layout_constraintEnd_toEndOf="@id/guideline_1"
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_4">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+
+            android:id="@+id/text_view_0"
+            android:text="@string/already_have"
+            android:fontFamily="@font/roboto_light_italic"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="14sp"
+            app:autoSizeMaxTextSize="36sp"
+            app:autoSizeStepGranularity="22sp"
+            android:gravity="center"
+            android:layout_marginStart="8dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/change_activity_text_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+
+            android:id="@+id/change_activity_text_view"
+            android:text="@string/log_in"
+            android:fontFamily="@font/roboto_light_italic"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="14sp"
+            app:autoSizeMaxTextSize="36sp"
+            app:autoSizeStepGranularity="22sp"
+            android:gravity="center"
+            android:layout_marginEnd="8dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/text_view_0"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -205,7 +260,7 @@
             android:text="@string/description_1"
             app:autoSizeStepGranularity="1sp"
             app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="22sp"
+            app:autoSizeMaxTextSize="16sp"
             app:autoSizeMinTextSize="14dp"
 
             app:layout_constraintTop_toBottomOf="@id/linear_layout_0"
@@ -241,6 +296,7 @@
         android:textScaleX="1.02"
         android:textSize="18sp"
         android:gravity="center"
+        android:alpha="0"
 
         app:layout_constraintTop_toTopOf="@id/guideline_horizontal_2"
         app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_3"
@@ -261,5 +317,22 @@
 
         app:layout_constraintRight_toRightOf="@id/guideline_1"
         app:layout_constraintTop_toBottomOf="@id/next_button" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/try_again_text_view_0"
+        android:text="@string/try_again_textview"
+        android:textSize="14sp"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/colorSkipGrey"
+        android:alpha="0"
+
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_0"
+        app:layout_constraintRight_toRightOf="@id/guideline_1"
+        app:layout_constraintTop_toTopOf="@id/guideline_horizontal_3"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -10,7 +10,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
 
-    tools:context=".view_layer.authentication.activities.MainActivity">
+    tools:context=".launch_app.view_layer.MainActivity">
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
@@ -160,7 +160,7 @@
             android:id="@+id/log_in_button_0"
             android:background="@drawable/log_in_button_custom"
             android:textColor="@color/colorViolet"
-            android:text="@string/log_in_textview"
+            android:text="@string/log_in"
             android:fontFamily="@font/roboto_regular"
             android:textSize="18sp"
             android:textScaleX="1.02"

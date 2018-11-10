@@ -94,7 +94,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
 
-            android:textColor="@color/colorDescriptionGrey"
+            android:textColor="@drawable/field_template_color"
             android:textOn="@string/male_text"
             android:textOff="@string/male_text"
             android:fontFamily="@font/roboto_regular"
@@ -116,7 +116,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
 
-            android:textColor="@color/colorDescriptionGrey"
+            android:textColor="@drawable/field_template_color"
             android:textOn="@string/female_text"
             android:textOff="@string/female_text"
             android:fontFamily="@font/roboto_regular"
@@ -205,7 +205,8 @@
             android:maxHeight="6dp"
             android:id="@+id/calendar_carete_icon"
             android:src="@drawable/calendar_carete_icon"
-            android:layout_marginStart="2dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="2dp"
             android:contentDescription="@string/calendar_view_description"
 
             app:layout_constraintBottom_toBottomOf="parent"

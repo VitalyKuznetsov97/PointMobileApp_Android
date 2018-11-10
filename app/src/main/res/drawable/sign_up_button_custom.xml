@@ -1,4 +1,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/sign_up_button_activated"
+        android:state_activated="true" />
     <item android:drawable="@drawable/sign_up_button_unpressed"
         android:state_pressed="false" />
     <item android:drawable="@drawable/sign_up_button_pressed"

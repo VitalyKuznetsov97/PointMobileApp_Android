@@ -93,7 +93,7 @@
                 android:layout_marginEnd="3dp"
                 android:textOff=""
                 android:textOn=""
-                android:id="@+id/checkbox_0"
+                android:id="@+id/gender_male_button"
                 android:background="@drawable/accept_button_custom" />
 
         </LinearLayout>
@@ -152,7 +152,7 @@
                 android:layout_marginEnd="3dp"
                 android:textOff=""
                 android:textOn=""
-                android:id="@+id/checkbox_1"
+                android:id="@+id/gender_female_button"
                 android:background="@drawable/accept_button_custom" />
         </LinearLayout>
 
@@ -210,7 +210,7 @@
                 android:layout_marginEnd="3dp"
                 android:textOff=""
                 android:textOn=""
-                android:id="@+id/checkbox_2"
+                android:id="@+id/gender_all_gender_button"
                 android:background="@drawable/accept_button_custom" />
 
         </LinearLayout>
@@ -273,7 +273,7 @@
             android:layout_columnWeight="0.2789"
             android:layout_rowSpan="2"
 
-            android:textColor="@color/colorDescriptionGrey"
+            android:textColor="@drawable/field_template_color"
             android:textOn="@string/age_group_zero"
             android:textOff="@string/age_group_zero"
             android:fontFamily="@font/roboto_regular"
@@ -299,7 +299,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="0.2789"
 
-            android:textColor="@color/colorDescriptionGrey"
+            android:textColor="@drawable/field_template_color"
             android:textOn="@string/age_group_one"
             android:textOff="@string/age_group_one"
             android:fontFamily="@font/roboto_regular"
@@ -325,7 +325,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="0.2789"
 
-            android:textColor="@color/colorDescriptionGrey"
+            android:textColor="@drawable/field_template_color"
             android:textOn="@string/age_group_two"
             android:textOff="@string/age_group_two"
             android:fontFamily="@font/roboto_regular"
@@ -351,7 +351,7 @@
             android:layout_rowWeight="0.3977"
             android:layout_columnWeight="0.2789"
 
-            android:textColor="@color/colorDescriptionGrey"
+            android:textColor="@drawable/field_template_color"
             android:textOn="@string/age_group_three"
             android:textOff="@string/age_group_three"
             android:fontFamily="@font/roboto_regular"
@@ -377,7 +377,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="0.2789"
 
-            android:textColor="@color/colorDescriptionGrey"
+            android:textColor="@drawable/field_template_color"
             android:textOn="@string/age_group_four"
             android:textOff="@string/age_group_four"
             android:fontFamily="@font/roboto_regular"
@@ -403,7 +403,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="0.2789"
 
-            android:textColor="@color/colorDescriptionGrey"
+            android:textColor="@drawable/field_template_color"
             android:textOn="@string/age_group_five"
             android:textOff="@string/age_group_five"
             android:fontFamily="@font/roboto_regular"
