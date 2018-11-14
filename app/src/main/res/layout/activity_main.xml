@@ -58,7 +58,7 @@
         app:layout_constraintBottom_toTopOf="@id/description_0"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_0"
         app:layout_constraintRight_toLeftOf="@+id/guideline_1"
-        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_0">
+        app:layout_constraintTop_toTopOf="@id/guideline_horizontal_0" >
 
         <ImageView
             android:layout_width="wrap_content"

@@ -9,7 +9,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline_horizontal_0"
+        android:id="@+id/guideline_0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -24,58 +24,73 @@
 
         app:layout_constraintGuide_percent="0.748648" />
 
-    <Space
+    <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.73544"
 
-        android:id="@+id/space_0"
-        app:layout_constraintVertical_weight="0.17105"
+        android:id="@id/constraint_layout_1"
 
-        app:layout_constraintBottom_toTopOf="@id/edit_text_0"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/get_a_verification_code_button"
+        app:layout_constraintTop_toBottomOf="@id/guideline_0"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline_horizontal_0" />
+        app:layout_constraintLeft_toLeftOf="parent" >
 
-    <EditText
-        android:id="@+id/edit_text_0"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
 
-        app:layout_constraintVertical_weight="0.18343"
-        android:layout_marginEnd="4dp"
-        android:fontFamily="@font/roboto_light"
-        android:gravity="start"
-        android:hint="@string/phone_number_hint"
-        android:inputType="phone"
-        android:paddingTop="10dp"
-        android:textColorHint="@color/colorIndicatorPurple"
-        android:textSize="14sp"
-        app:layout_constraintHeight_max="40dp"
-        android:theme="@style/EditTextName"
+            android:id="@+id/space_0"
+            app:layout_constraintVertical_weight="0.26105"
 
-        app:layout_constraintBottom_toTopOf="@id/space_1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/space_0" />
+            app:layout_constraintBottom_toTopOf="@id/edit_text_0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        <EditText
+            android:id="@+id/edit_text_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
 
-        android:id="@+id/space_1"
-        app:layout_constraintVertical_weight="0.41268"
+            app:layout_constraintVertical_weight="0.32343"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="start"
+            android:hint="@string/phone_number_hint"
+            android:inputType="phone"
+            android:paddingTop="10dp"
+            android:textColorHint="@color/colorIndicatorPurple"
+            android:textSize="14sp"
+            app:layout_constraintHeight_max="40dp"
+            android:theme="@style/EditTextName"
 
-        app:layout_constraintBottom_toTopOf="@id/get_a_verificatiom_code_button"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_0" />
+            app:layout_constraintBottom_toTopOf="@id/space_1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/space_0"
+            tools:ignore="Autofill" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:id="@+id/space_1"
+            app:layout_constraintVertical_weight="0.41268"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_text_0" />
+
+    </android.support.constraint.ConstraintLayout>
 
     <Button
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintVertical_weight="0.26455"
+        app:layout_constraintVertical_weight="0.25195"
 
-        android:id="@+id/get_a_verificatiom_code_button"
+        android:id="@+id/get_a_verification_code_button"
         android:background="@drawable/sign_up_button_custom"
         android:text="@string/get_a_verification_code_button"
         android:fontFamily="@font/roboto_regular"
@@ -85,6 +100,21 @@
         app:layout_constraintBottom_toBottomOf="@id/guideline_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/space_1"/>
+        app:layout_constraintTop_toBottomOf="@id/constraint_layout_1"/>
+
+    <TextView
+        android:id="@+id/error_text_view_0"
+        android:layout_width="0dp"
+
+        android:layout_marginTop="6dp"
+        android:layout_height="wrap_content"
+        android:alpha="0"
+        android:fontFamily="@font/roboto_light_italic"
+        android:text="@string/wrong_phone_number_textview"
+        android:textColor="@color/colorErrorPink"
+        android:textSize="12sp"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/get_a_verification_code_button" />
 
 </android.support.constraint.ConstraintLayout>

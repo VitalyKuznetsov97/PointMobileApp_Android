@@ -1,4 +1,4 @@
-package com.vitaly_kuznetsov.point.base_models;
+package com.vitaly_kuznetsov.point.base_models.mvp_base_contract;
 
 public interface BaseContract {
 

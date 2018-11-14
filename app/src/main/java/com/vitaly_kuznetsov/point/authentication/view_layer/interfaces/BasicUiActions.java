@@ -1,14 +1,14 @@
 package com.vitaly_kuznetsov.point.authentication.view_layer.interfaces;
 
-import android.support.v4.app.Fragment;
-
 import com.vitaly_kuznetsov.point.authentication.presenter_layer.interfaces.AbstractAuthenticationPresenter;
+import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostModel;
 
 interface BasicUiActions {
 
     //Intents
     void changeAuthenticationActivity();
     void goToMainActivity();
+    void goToHomeActivity(PostModel postModel);
 
     //Show or hide buttons
     void showTryAgainTextView();
@@ -16,10 +16,12 @@ interface BasicUiActions {
     void showError();
     void hideError();
 
-    //Show Fragment
-    void showAuthenticationFragment(int current);
+    //Show or remove Fragment
+    void showAuthenticationFragment(AuthenticationFragment newFragment);
+    void removeAuthenticationFragment();
 
-    //Getters
+    //Getters and Setters
     AbstractAuthenticationPresenter getPresenter();
-    Fragment getFragment();
+    AuthenticationFragment getFragment();
+    void setFragment(AuthenticationFragment fragment);
 }

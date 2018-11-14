@@ -1,14 +1,25 @@
 package com.vitaly_kuznetsov.point.authentication.presenter_layer.interfaces;
 
+import android.content.Context;
+
+import com.vitaly_kuznetsov.point.authentication.model_layer.user_model_preferences.ModelHandler;
 import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.AbstractAuthenticationView;
-import com.vitaly_kuznetsov.point.base_models.BaseContract;
+import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.AuthenticationFragment;
+import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.BasicCodeActionsFragment;
+import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BaseContract;
+import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostModel;
+import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostPayload;
+import com.vitaly_kuznetsov.point.base_models.user_data_model.UserDataModel;
 
 //Abstract class, to be extended by other AuthenticationPresenters
 public abstract class AbstractAuthenticationPresenter implements
-        BaseContract.Presenter, BasicAuthenticationStateActions, BasicAuthenticationUi {
+        BaseContract.Presenter, BasicAuthenticationStateActions, BasicAuthenticationUi,
+        BasicAuthenticationModelActions {
 
-    private AbstractAuthenticationView currentView;
-    private int currentStep;
+    protected AbstractAuthenticationView currentView;
+    protected int currentStep;
+    private UserDataModel userDataModel;
+    protected PostModel postModel;
 
     //-----------Presenter Functions------------
 
@@ -16,6 +27,7 @@ public abstract class AbstractAuthenticationPresenter implements
     public void attachView(BaseContract.View view) {
         this.currentView = (AbstractAuthenticationView) view;
         this.currentStep = -1;
+        this.userDataModel = ModelHandler.getInstance((Context) view);
     }
 
     @Override
@@ -38,7 +50,7 @@ public abstract class AbstractAuthenticationPresenter implements
     @Override
     public void onTryAgainTextViewClicked() {}
 
-    //-----------UI Activity Functions------------
+    //-----------UI Change State Functions------------
 
     @Override
     public void onAfterError() {
@@ -46,9 +58,75 @@ public abstract class AbstractAuthenticationPresenter implements
     }
 
     @Override
-    public void onBackPressed() {
+    public boolean onBackPressed() {
         if (currentStep != 0) {
             currentStep--;
+            currentView.hideError();
+            return true;
         }
+        return false;
+    }
+
+    @Override
+    public boolean onNextFragmentClicked() {
+        if (currentView.getFragment() == null || currentView.getFragment().isReadyToProgress()) {
+            this.currentStep++;
+            return true;
+        }
+        else
+            this.currentView.showError();
+        return false;
+    }
+
+    @Override
+    public void onStopView() {
+        if (this.userDataModel != null)
+            ModelHandler.changeUserDataModel(this.userDataModel);
+    }
+
+
+    @Override
+    public boolean mayStartHttpRequest() {
+        AuthenticationFragment fragment = currentView.getFragment();
+        if (fragment.isReadyToProgress()){
+            fragment.saveFragmentState();
+            return true;
+        }
+        else {
+            this.currentView.showError();
+            return false;
+        }
+    }
+
+    //---------Model Actions----------
+
+    @Override
+    public UserDataModel getUserDataModel() {
+        return userDataModel;
+    }
+
+    @Override
+    public void onResponse(PostModel postModel) {
+        BasicCodeActionsFragment fragment = (BasicCodeActionsFragment) currentView.getFragment();
+        if (postModel.getStatus()){
+            PostPayload payload = postModel.getPayload();
+            if (payload.getStatus()) {
+                this.postModel = postModel;
+                onNextFragmentClicked();
+                return;
+            }
+            else
+                fragment.setErrorText(payload.getMessage());
+        }
+        else
+            fragment.setErrorText(postModel.getMessage());
+        this.currentView.showError();
+    }
+
+    @Override
+    public void onFailure(String errorMessage) {
+        BasicCodeActionsFragment fragment = (BasicCodeActionsFragment) currentView.getFragment();
+        fragment.setErrorText(errorMessage);
+        this.currentView.showError();
     }
 }

@@ -1,12 +1,9 @@
 package com.vitaly_kuznetsov.point.authentication.view_layer.fragments;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,24 +12,23 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.vitaly_kuznetsov.point.R;
-import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.AuthenticationFragment;
-import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.SignUpView;
-import com.vitaly_kuznetsov.point.base_models.UserDataModel;
+import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.AbstractAuthenticationFragment;
+
+import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.BasicUIActionsFragment;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Objects;
 
-public class SignUpOneFragment extends Fragment implements AuthenticationFragment {
-
-    private UserDataModel userDataModel;
+public class SignUpOneFragment extends AbstractAuthenticationFragment implements BasicUIActionsFragment {
 
     private EditText nameEditText;
     private ToggleButton maleButton;
     private ToggleButton femaleButton;
     private TextView calendarTextView;
+
+    //--------------Lifecycle Actions----------------
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -43,26 +39,15 @@ public class SignUpOneFragment extends Fragment implements AuthenticationFragmen
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        try {
-            if (this.userDataModel == null){
-                SignUpView signUpView = (SignUpView) Objects.requireNonNull(getActivity());
-                this.userDataModel = signUpView.getPresenter().getUserDataModel();
-            }
-        } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()
-                    + " AuthenticationView Interface.");
-        }
-    }
-
-    @Override
     public void onStop() {
         super.onStop();
         saveFragmentState();
     }
 
+    //--------------Initialize Fragment upon creation----------------
+
     @SuppressLint("ClickableViewAccessibility")
+    @Override
     public void init(View view) {
 
         maleButton = view.findViewById(R.id.gender_male_button);
@@ -99,42 +84,46 @@ public class SignUpOneFragment extends Fragment implements AuthenticationFragmen
         setViewsFromUserDataModel();
     }
 
-    private void setViewsFromUserDataModel(){
+    @Override
+    public void setViewsFromUserDataModel(){
 
-        nameEditText.setText(this.userDataModel.getUserName());
+        nameEditText.setText(this.userDataModel.getNickname());
 
-        if (this.userDataModel.getUserGender() == 0)
+        if (this.userDataModel.getMyGender() == 1)
             maleButton.setChecked(true);
-        else if (this.userDataModel.getUserGender() == 1)
+        else if (this.userDataModel.getMyGender() == 0)
             femaleButton.setChecked(true);
 
-        if (this.userDataModel.getUserBirthDate() != null){
+        if (this.userDataModel.getMyAge() != null){
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
-            calendarTextView.setText(dateFormat.format(this.userDataModel.getUserBirthDate()));
+            calendarTextView.setText(dateFormat.format(this.userDataModel.getMyAge()));
         }
     }
 
+    //--------------Save Fragment data, if Fragment is being--------------
+    // -------------in onStop State or starts http request----------------
+
     @Override
     public void saveFragmentState() {
-
-        Log.i("Save: ", String.valueOf(1));
-        this.userDataModel.setUserName(String.valueOf(this.nameEditText.getText()));
+        this.userDataModel.setNickname(String.valueOf(this.nameEditText.getText()));
 
         if (maleButton.isChecked())
-            this.userDataModel.setUserGender(0);
+            this.userDataModel.setMyGender(1);
         else if (femaleButton.isChecked())
-            this.userDataModel.setUserGender(1);
+            this.userDataModel.setMyGender(0);
         else
-            this.userDataModel.setUserGender(2);
+            this.userDataModel.setMyGender(2);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
         try {
             Date date = dateFormat.parse(String.valueOf(calendarTextView.getText()));
-            this.userDataModel.setUserBirthDate(date);
+            this.userDataModel.setMyAge(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }
     }
+
+    //--------------Checks if all info in fragment is filled correctly----------------
 
     @Override
     public boolean isReadyToProgress() {

@@ -2,10 +2,7 @@ package com.vitaly_kuznetsov.point.authentication.view_layer.fragments;
 
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,22 +12,20 @@ import android.widget.LinearLayout;
 import android.widget.ToggleButton;
 
 import com.vitaly_kuznetsov.point.R;
-import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.AuthenticationFragment;
-import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.SignUpView;
-import com.vitaly_kuznetsov.point.base_models.UserDataModel;
+import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.AbstractAuthenticationFragment;
+import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.BasicUIActionsFragment;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class SignUpTwoFragment extends Fragment implements AuthenticationFragment {
-
-    private UserDataModel userDataModel;
+public class SignUpTwoFragment extends AbstractAuthenticationFragment implements BasicUIActionsFragment {
 
     private ToggleButton allAgeToggleButton;
     private ArrayList<ToggleButton> ageToggleButtonArrayList;
     private ToggleButton maleToggleButton;
     private ToggleButton femaleToggleButton;
     private ToggleButton allGenderButton;
+
+    //--------------Lifecycle Actions----------------
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -41,25 +36,14 @@ public class SignUpTwoFragment extends Fragment implements AuthenticationFragmen
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        try {
-            if (this.userDataModel == null){
-                SignUpView signUpView = (SignUpView) Objects.requireNonNull(getActivity());
-                this.userDataModel = signUpView.getPresenter().getUserDataModel();
-            }
-        } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()
-                    + " AuthenticationView Interface.");
-        }
-    }
-
-    @Override
     public void onStop() {
         super.onStop();
         saveFragmentState();
     }
 
+    //--------------Initialize Fragment upon creation----------------
+
+    @Override
     public void init(View view) {
         //View and array initialization
         GridLayout gridLayout = view.findViewById(R.id.grid_layout_0);
@@ -154,46 +138,65 @@ public class SignUpTwoFragment extends Fragment implements AuthenticationFragmen
         setViewsFromUserDataModel();
     }
 
-    private void setViewsFromUserDataModel(){
+    @Override
+    public void setViewsFromUserDataModel(){
 
-        if (this.userDataModel.getPreferredGender() == 0)
+        if (this.userDataModel.getYourGender() == 1)
             maleToggleButton.setChecked(true);
-        else if (this.userDataModel.getPreferredGender() == 1)
+        else if (this.userDataModel.getYourGender() == 0)
             femaleToggleButton.setChecked(true);
-        else if (this.userDataModel.getPreferredGender() == 2)
+        else if (this.userDataModel.getYourGender() == -1)
             allGenderButton.setChecked(true);
 
-        ArrayList<Integer> agesArrayList = this.userDataModel.getPreferredAge();
-        if (agesArrayList.contains(5))
+        ArrayList<String> agesArrayList = this.userDataModel.getYourAge();
+        if (agesArrayList.contains(getStringById(R.string.age_group_five)))
             allAgeToggleButton.setChecked(true);
         else {
-            for (int i : agesArrayList) {
-                ageToggleButtonArrayList.get(i).setChecked(true);
+            for (String age : agesArrayList) {
+                if (age.equals(getStringById(R.string.age_group_zero)))
+                    ageToggleButtonArrayList.get(0).setChecked(true);
+                else if (age.equals(getStringById(R.string.age_group_one)))
+                    ageToggleButtonArrayList.get(1).setChecked(true);
+                else if (age.equals(getStringById(R.string.age_group_two)))
+                    ageToggleButtonArrayList.get(2).setChecked(true);
+                else if (age.equals(getStringById(R.string.age_group_three)))
+                    ageToggleButtonArrayList.get(3).setChecked(true);
+                else if (age.equals(getStringById(R.string.age_group_four)))
+                    ageToggleButtonArrayList.get(4).setChecked(true);
             }
         }
     }
 
+    private String getStringById(int id){
+        return getResources().getString(id);
+    }
+
+    //--------------Save Fragment data, if Fragment is being--------------
+    // -------------in onStop State or starts http request----------------
+
     @Override
     public void saveFragmentState() {
-        Log.i("Save: ", String.valueOf(2));
         if (maleToggleButton.isChecked())
-            this.userDataModel.setPreferredGender(0);
+            this.userDataModel.setYourGender(1);
         else if (femaleToggleButton.isChecked())
-            this.userDataModel.setPreferredGender(1);
+            this.userDataModel.setYourGender(0);
         else if (allGenderButton.isChecked())
-            this.userDataModel.setPreferredGender(2);
+            this.userDataModel.setYourGender(-1);
         else
-            this.userDataModel.setPreferredGender(3);
+            this.userDataModel.setYourGender(2);
 
-        int i = 0;
-        ArrayList<Integer> agesArrayList = new ArrayList<>();
-        for (ToggleButton button : ageToggleButtonArrayList){
-            if(button.isChecked()) agesArrayList.add(i);
-            i++;
+        ArrayList<String> agesArrayList = new ArrayList<>();
+        if (allAgeToggleButton.isChecked())
+            agesArrayList.add(String.valueOf(allAgeToggleButton.getText()));
+        else {
+            for (ToggleButton button : ageToggleButtonArrayList)
+                if(button.isChecked()) agesArrayList.add(String.valueOf(button.getText()));
         }
-        if (allAgeToggleButton.isChecked()) agesArrayList.add(5);
-        this.userDataModel.setPreferredAge(agesArrayList);
+
+        this.userDataModel.setYourAge(agesArrayList);
     }
+
+    //--------------Checks if all info in fragment is filled correctly----------------
 
     @Override
     public boolean isReadyToProgress() {
