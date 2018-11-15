@@ -2,23 +2,24 @@ package com.vitaly_kuznetsov.point.authentication.presenter_layer.interfaces;
 
 import android.content.Context;
 
-import com.vitaly_kuznetsov.point.authentication.model_layer.user_model_preferences.ModelHandler;
+import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BasicModelActionsInterface;
+import com.vitaly_kuznetsov.point.base_models.user_data_model.user_model_preferences.ModelHandler;
 import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.AbstractAuthenticationView;
 import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.AuthenticationFragment;
 import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.BasicCodeActionsFragment;
 import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BaseContract;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostModel;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostPayload;
-import com.vitaly_kuznetsov.point.base_models.user_data_model.UserDataModel;
+import com.vitaly_kuznetsov.point.base_models.user_data_model.model.UserDataModel;
 
 //Abstract class, to be extended by other AuthenticationPresenters
 public abstract class AbstractAuthenticationPresenter implements
         BaseContract.Presenter, BasicAuthenticationStateActions, BasicAuthenticationUi,
-        BasicAuthenticationModelActions {
+        BasicModelActionsInterface {
 
     protected AbstractAuthenticationView currentView;
     protected int currentStep;
-    private UserDataModel userDataModel;
+    protected UserDataModel userDataModel;
     protected PostModel postModel;
 
     //-----------Presenter Functions------------

@@ -2,7 +2,7 @@ package com.vitaly_kuznetsov.point.authentication.model_layer.server.interfaces;
 
 import android.support.annotation.NonNull;
 
-import com.vitaly_kuznetsov.point.authentication.presenter_layer.interfaces.AbstractAuthenticationPresenter;
+import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BasicModelActionsInterface;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostModel;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.api.PointServiceApi;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.request_models.RequestModel;
@@ -16,7 +16,7 @@ import retrofit2.Retrofit;
 public abstract class AbstractApiRequestController implements AuthenticationApiInterface {
 
     protected PointServiceApi api;
-    private AbstractAuthenticationPresenter presenter;
+    private BasicModelActionsInterface presenter;
 
     /*----------------------------------------------------------
               A base class, that starts http requests from
@@ -27,7 +27,7 @@ public abstract class AbstractApiRequestController implements AuthenticationApiI
      */
 
     @Override
-    public void start(AbstractAuthenticationPresenter authenticationPresenter) {
+    public void start(BasicModelActionsInterface authenticationPresenter) {
 
         //TODO find out, how to create a viable progressBar
 

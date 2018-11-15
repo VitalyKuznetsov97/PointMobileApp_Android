@@ -1,7 +1,7 @@
 package com.vitaly_kuznetsov.point.authentication.model_layer.server.registration;
 
 import com.vitaly_kuznetsov.point.authentication.model_layer.server.interfaces.AbstractApiRequestController;
-import com.vitaly_kuznetsov.point.authentication.presenter_layer.interfaces.AbstractAuthenticationPresenter;
+import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BasicModelActionsInterface;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostModel;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.request_models.RequestModel;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.request_models.RequestPayload;
@@ -20,7 +20,7 @@ public class RegistrationCheckPhoneRequestController extends AbstractApiRequestC
     }
 
     @Override
-    public RequestPayload getPayload(AbstractAuthenticationPresenter authenticationPresenter) {
+    public RequestPayload getPayload(BasicModelActionsInterface authenticationPresenter) {
         return RequestPayload.createCheckPhonePayload(authenticationPresenter.getUserDataModel());
     }
 

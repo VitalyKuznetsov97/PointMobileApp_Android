@@ -1,9 +1,9 @@
-package com.vitaly_kuznetsov.point.authentication.presenter_layer.interfaces;
+package com.vitaly_kuznetsov.point.base_models.mvp_base_contract;
 
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostModel;
-import com.vitaly_kuznetsov.point.base_models.user_data_model.UserDataModel;
+import com.vitaly_kuznetsov.point.base_models.user_data_model.model.UserDataModel;
 
-interface BasicAuthenticationModelActions {
+public interface BasicModelActionsInterface {
 
     UserDataModel getUserDataModel();
     void onResponse(PostModel postModel);

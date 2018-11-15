@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 
 import com.vitaly_kuznetsov.point.authentication.presenter_layer.interfaces.AbstractAuthenticationPresenter;
 import com.vitaly_kuznetsov.point.authentication.presenter_layer.presenters.SignUpViewPresenter;
-import com.vitaly_kuznetsov.point.base_models.user_data_model.UserDataModel;
+import com.vitaly_kuznetsov.point.base_models.user_data_model.model.UserDataModel;
 
 import java.util.Objects;
 

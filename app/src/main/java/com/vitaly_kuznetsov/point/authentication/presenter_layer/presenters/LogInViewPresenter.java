@@ -15,25 +15,23 @@ public class LogInViewPresenter extends AbstractAuthenticationPresenter {
                 this.currentView.showAuthenticationFragment(new GetCodeFragment());
             else if (currentStep == 1)
                 this.currentView.showAuthenticationFragment(new SendCodeFragment());
-            else if (currentStep == 2)
+            else if (currentStep == 2) {
+                this.userDataModel.setToken(this.postModel.getPayload().getData().getToken());
                 currentView.goToHomeActivity(this.postModel);
+            }
         }
         return false;
     }
 
     @Override
-    public boolean onGetVerificationCodeButtonClicked() {
+    public void onGetVerificationCodeButtonClicked() {
         if (mayStartHttpRequest())
             LoginCheckPhoneRequestController.getInstance().start(this);
-
-        return false;
     }
 
     @Override
-    public boolean onGoButtonClicked() {
+    public void onGoButtonClicked() {
         if (mayStartHttpRequest())
             LoginSubmitSmsRequestController.getInstance().start(this);
-
-        return false;
     }
 }

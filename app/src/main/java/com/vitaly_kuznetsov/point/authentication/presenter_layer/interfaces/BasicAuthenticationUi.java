@@ -9,7 +9,7 @@ interface BasicAuthenticationUi {
     void onTryAgainTextViewClicked();
 
     //Also start a http request
-    boolean onGoButtonClicked();
-    boolean onGetVerificationCodeButtonClicked();
+    void onGoButtonClicked();
+    void onGetVerificationCodeButtonClicked();
 
 }

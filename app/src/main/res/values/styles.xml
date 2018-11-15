@@ -13,4 +13,10 @@
         <item name="colorControlNormal">@color/colorControlNormal</item>
         <item name="colorControlActivated">@color/colorControlNormal</item>
     </style>
+
+    <style name="ProgressBarCustom" parent="Base.Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="colorAccent">@color/colorProgressBar</item>
+        <item name="android:progressDrawable">@drawable/progress_bar_custom_drawable</item>
+    </style>
+
 </resources>

@@ -15,4 +15,5 @@
     <color name="colorFieldPressed">#706e79</color>
     <color name="colorErrorPink">#FC96AF</color>
     <color name="colorControlNormal">#68647C</color>
+    <color name="colorProgressBar">#D156A2</color>
 </resources>

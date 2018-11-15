@@ -1,10 +1,10 @@
-package com.vitaly_kuznetsov.point.authentication.model_layer.user_model_preferences;
+package com.vitaly_kuznetsov.point.base_models.user_data_model.user_model_preferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
-import com.vitaly_kuznetsov.point.base_models.user_data_model.UserDataModel;
+import com.vitaly_kuznetsov.point.base_models.user_data_model.model.UserDataModel;
 
 public final class ModelHandler{
 

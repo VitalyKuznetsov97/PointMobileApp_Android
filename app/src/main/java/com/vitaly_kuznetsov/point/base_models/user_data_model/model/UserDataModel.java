@@ -1,4 +1,4 @@
-package com.vitaly_kuznetsov.point.base_models.user_data_model;
+package com.vitaly_kuznetsov.point.base_models.user_data_model.model;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,6 +27,7 @@ public class UserDataModel {
         this.yourAge = new ArrayList<>();
         this.phone = "";
         this.sms = "";
+        this.token = "";
     }
 
     public String getNickname() {

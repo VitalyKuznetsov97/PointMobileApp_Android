@@ -30,6 +30,7 @@ public class SignUpViewPresenter extends AbstractAuthenticationPresenter
             else if (currentStep == 3)
                 this.currentView.showAuthenticationFragment(new SendCodeFragment());
             else if (currentStep == 4) {
+                this.userDataModel.setToken(this.postModel.getPayload().getData().getToken());
                 currentView.goToHomeActivity(this.postModel);
             }
         }
@@ -56,19 +57,15 @@ public class SignUpViewPresenter extends AbstractAuthenticationPresenter
     //-----------------Also start a http request---------------------
 
     @Override
-    public boolean onGetVerificationCodeButtonClicked() {
+    public void onGetVerificationCodeButtonClicked() {
         if (mayStartHttpRequest())
             RegistrationCheckPhoneRequestController.getInstance().start(this);
-
-        return false;
     }
 
     @Override
-    public boolean onGoButtonClicked() {
+    public void onGoButtonClicked() {
         if (mayStartHttpRequest())
             RegistrationRegisterUserRequestController.getInstance().start(this);
-
-        return false;
     }
 
     //---------------Set UI----------------

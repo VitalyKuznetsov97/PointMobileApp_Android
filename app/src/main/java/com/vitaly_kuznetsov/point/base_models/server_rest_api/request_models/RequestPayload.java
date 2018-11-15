@@ -1,6 +1,6 @@
 package com.vitaly_kuznetsov.point.base_models.server_rest_api.request_models;
 
-import com.vitaly_kuznetsov.point.base_models.user_data_model.UserDataModel;
+import com.vitaly_kuznetsov.point.base_models.user_data_model.model.UserDataModel;
 
 public class RequestPayload {
 

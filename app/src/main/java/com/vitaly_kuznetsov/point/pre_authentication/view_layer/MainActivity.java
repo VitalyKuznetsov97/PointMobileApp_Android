@@ -1,4 +1,4 @@
-package com.vitaly_kuznetsov.point.launch_app.view_layer;
+package com.vitaly_kuznetsov.point.pre_authentication.view_layer;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,8 +9,7 @@ import android.widget.Button;
 import com.vitaly_kuznetsov.point.R;
 import com.vitaly_kuznetsov.point.authentication.view_layer.activities.LogInActivity;
 import com.vitaly_kuznetsov.point.authentication.view_layer.activities.SignUpActivity;
-import com.vitaly_kuznetsov.point.launch_app.presenter_layer.MainViewPresenter;
-import com.vitaly_kuznetsov.point.launch_app.view_layer.MainView;
+import com.vitaly_kuznetsov.point.pre_authentication.presenter_layer.MainViewPresenter;
 
 public class MainActivity extends AppCompatActivity implements MainView {
 

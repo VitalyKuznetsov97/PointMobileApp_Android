@@ -1,6 +1,6 @@
 package com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models;
 
-class Data {
+public class Data {
 
     private UserData userData;
     private String token;
