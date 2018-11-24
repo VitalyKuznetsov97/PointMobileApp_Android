@@ -5,29 +5,262 @@
     android:id="@+id/constraint_layout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.HomeActivity">
+    android:background="@drawable/bg"
+    tools:context=".home.view_layer.activities.HomeActivity">
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:textSize="14sp"
-        android:layout_margin="10dp"
-        app:layout_constraintBottom_toTopOf="@id/navigation"
+        app:layout_constraintVertical_weight="0.08721"
+
+        android:id="@+id/top_bar_image_view"
+        android:background="@drawable/top_bar_bg"
+
+        app:layout_constraintBottom_toTopOf="@id/fragment_constraint_layout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+        
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:layout_marginStart="6dp"
+            android:src="@drawable/logo"
+            android:id="@+id/top_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/top_text"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/colorBlackField"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="22sp"
+            app:autoSizeMaxTextSize="26sp"
+            android:lineHeight="28sp"
+            app:autoSizeStepGranularity="1sp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
+        android:layout_height="0dp"
+        android:id="@+id/text"
+        app:layout_constraintBottom_toTopOf="@id/constrain_layout_navigation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_bar_image_view"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.8137"
+
+        android:id="@+id/fragment_constraint_layout"
+
+        app:layout_constraintBottom_toTopOf="@id/constrain_layout_navigation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_bar_image_view">
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:id="@+id/constrain_layout_navigation"
+        android:background="@drawable/home_nav_background"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/navigation" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_constraint_layout"
+        app:layout_constraintVertical_weight="0.099085">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/settings_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:layout_marginTop="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintHorizontal_weight="0.304"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/home_layout"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/view_1"
+                android:layout_width="0dp"
+
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintHorizontal_weight="0.36521"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/settings_button"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ToggleButton
+                android:id="@+id/settings_button"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                app:layout_constraintDimensionRatio="1:1"
+
+                android:background="@drawable/settings_nav_icon_custom"
+                android:textOff=""
+                android:textOn=""
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintHorizontal_weight="0.42982"
+                app:layout_constraintLeft_toRightOf="@+id/view_1"
+                app:layout_constraintRight_toLeftOf="@+id/view_2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintHorizontal_weight="0.2"
+                app:layout_constraintLeft_toRightOf="@+id/settings_button"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/home_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:layout_marginTop="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintHorizontal_weight="0.38933"
+            app:layout_constraintLeft_toRightOf="@+id/settings_layout"
+            app:layout_constraintRight_toLeftOf="@+id/messages_layout"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/view_3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                android:layout_marginStart="35dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintHorizontal_weight="0.102465"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/home_button"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ToggleButton
+                android:id="@+id/home_button"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+
+                android:background="@drawable/home_nav_icon_custom"
+                android:textOff=""
+                android:textOn=""
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintHorizontal_weight="0.335068"
+                app:layout_constraintLeft_toRightOf="@+id/view_3"
+                app:layout_constraintRight_toLeftOf="@+id/view_4"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view_4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                android:layout_marginEnd="35dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintHorizontal_weight="0.102465"
+                app:layout_constraintLeft_toRightOf="@+id/home_button"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/messages_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:layout_marginTop="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintHorizontal_weight="0.30666"
+            app:layout_constraintLeft_toRightOf="@+id/home_layout"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                android:id="@+id/view_5"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_weight="0.2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/messages_button"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ToggleButton
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                app:layout_constraintDimensionRatio="1:1"
+
+                android:id="@+id/messages_button"
+                android:background="@drawable/messages_nav_icon_custom"
+                android:textOff=""
+                android:textOn=""
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintHorizontal_weight="0.42982"
+                app:layout_constraintLeft_toRightOf="@+id/view_5"
+                app:layout_constraintRight_toLeftOf="@+id/view_6"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                android:id="@+id/view_6"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_weight="0.36521"
+                app:layout_constraintLeft_toRightOf="@+id/messages_button"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

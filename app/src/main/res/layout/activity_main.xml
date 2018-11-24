@@ -10,7 +10,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
 
-    tools:context=".pre_authentication.view_layer.MainActivity">
+    tools:context=".main_activity.view_layer.MainActivity">
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"

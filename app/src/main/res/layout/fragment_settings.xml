@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/constraint_layout_main"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".home.view_layer.fragments.SettingsFragment">
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/guideline_0"
+        android:orientation="vertical"
+
+        app:layout_constraintGuide_percent="0.13333" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/guideline_1"
+        android:orientation="vertical"
+
+        app:layout_constraintGuide_percent="0.86666" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/guideline_horizontal_0"
+        android:orientation="horizontal"
+
+        app:layout_constraintGuide_percent="0.83333" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.24444"
+
+        android:layout_marginTop="19dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="17dp"
+        android:id="@+id/constraint_layout_0"
+        android:background="@drawable/user_file_card"
+
+        app:layout_constraintBottom_toTopOf="@id/privacy_field"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+
+            android:layout_marginTop="13dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="13dp"
+            android:id="@+id/constraint_layout_picture"
+            android:background="@drawable/female_frame"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleX="0.95"
+                android:scaleY="0.95"
+                android:alpha="0.3"
+
+                android:id="@+id/user_avatar"
+                android:src="@drawable/female_background_pic"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:id="@+id/linear_layout_info"
+            android:orientation="vertical"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="20dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/constraint_layout_picture"
+            app:layout_constraintRight_toLeftOf="@id/pencil"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/text_name"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="3dp"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="start"
+                android:text="@string/name_hint"
+                android:textColor="@color/colorBlackField"
+                app:autoSizeMaxTextSize="22sp"
+                app:autoSizeMinTextSize="18sp"
+                app:autoSizeStepGranularity="1sp"
+                app:autoSizeTextType="uniform" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/text_description"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_light_italic"
+                android:gravity="start"
+                android:text="@string/settings_description_0"
+                android:textColor="@color/colorDescriptionGrey"
+                app:autoSizeMaxTextSize="14sp"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeStepGranularity="1sp"
+                app:autoSizeTextType="uniform" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/text_phone"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="9dp"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="start"
+                android:text="@string/phone_number"
+                android:textColor="@color/colorDescriptionMoreGrey"
+                app:autoSizeMaxTextSize="16sp"
+                app:autoSizeMinTextSize="14sp"
+                app:autoSizeStepGranularity="1sp"
+                app:autoSizeTextType="uniform" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+
+            android:layout_marginEnd="10dp"
+            android:id="@+id/pencil"
+            android:background="@drawable/pencil_pic"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="ContentDescription" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.05555"
+
+        android:id="@+id/privacy_field"
+        android:background="@color/colorControlTransparent"
+        android:text="@string/privacy_field"
+        android:gravity="center"
+        android:textColor="@color/colorBlackField"
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto_light"
+
+        app:layout_constraintBottom_toTopOf="@id/constraint_layout_1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraint_layout_0" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.353333"
+
+
+        android:id="@+id/constraint_layout_1"
+
+        app:layout_constraintBottom_toTopOf="@id/about_field"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_0"
+        app:layout_constraintRight_toRightOf="@id/guideline_1"
+        app:layout_constraintTop_toBottomOf="@id/privacy_field" >
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="0.125786"
+
+            android:id="@+id/space_0"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/settings_button_0" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="0.1761"
+
+            android:id="@+id/settings_button_0"
+            android:text="@string/setting_option_0"
+            android:gravity="fill"
+            android:textColor="@color/colorDescriptionGrey"
+            android:textSize="17sp"
+            android:fontFamily="@font/roboto_regular"
+
+            app:layout_constraintTop_toBottomOf="@id/space_0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/divider_0" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="0.113207"
+
+            android:orientation="horizontal"
+            android:id="@+id/divider_0"
+
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="3dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settings_button_0"
+            app:layout_constraintBottom_toTopOf="@id/settings_button_1">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/colorDescriptionGrey"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="0.1761"
+
+            android:id="@+id/settings_button_1"
+            android:text="@string/setting_option_1"
+            android:gravity="fill"
+            android:textColor="@color/colorDescriptionGrey"
+            android:textSize="17sp"
+            android:fontFamily="@font/roboto_regular"
+
+            app:layout_constraintTop_toBottomOf="@id/divider_0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/divider_1" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="0.113207"
+
+            android:orientation="horizontal"
+            android:id="@+id/divider_1"
+
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="3dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settings_button_1"
+            app:layout_constraintBottom_toTopOf="@id/settings_button_2">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/colorDescriptionGrey"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="0.1761"
+
+            android:id="@+id/settings_button_2"
+            android:text="@string/setting_option_2"
+            android:gravity="fill"
+            android:textColor="@color/colorDescriptionGrey"
+            android:textSize="17sp"
+            android:fontFamily="@font/roboto_regular"
+
+            app:layout_constraintBottom_toTopOf="@id/space_1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_1" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="0.125786"
+
+            android:id="@+id/space_1"
+
+            app:layout_constraintTop_toBottomOf="@id/settings_button_2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.055555"
+
+        android:id="@+id/about_field"
+        android:background="@color/colorControlTransparent"
+        android:text="@string/about_field"
+        android:gravity="center"
+        android:textColor="@color/colorBlackField"
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto_light"
+
+        app:layout_constraintBottom_toTopOf="@id/constraint_layout_2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraint_layout_1" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraint_layout_2"
+        android:layout_width="0dp"
+        android:layout_height="96dp"
+
+        app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_0"
+
+        app:layout_constraintLeft_toLeftOf="@id/guideline_0"
+        app:layout_constraintRight_toRightOf="@id/guideline_1"
+        app:layout_constraintTop_toBottomOf="@id/about_field"
+        app:layout_constraintVertical_weight="0.20888">
+
+        <Space
+            android:id="@+id/space_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            app:layout_constraintBottom_toTopOf="@id/settings_button_3"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="0.212765" />
+
+        <TextView
+            android:id="@+id/settings_button_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="fill"
+            android:text="@string/setting_option_3"
+            android:textColor="@color/colorDescriptionGrey"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@id/divider_2"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/space_2"
+            app:layout_constraintVertical_weight="0.297872" />
+
+        <LinearLayout
+            android:id="@+id/divider_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="3dp"
+
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/settings_button_4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settings_button_3"
+            app:layout_constraintVertical_weight="0.191489">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/colorDescriptionGrey" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/settings_button_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="fill"
+            android:text="@string/setting_option_4"
+            android:textColor="@color/colorDescriptionGrey"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_2"
+            app:layout_constraintVertical_weight="0.297872" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

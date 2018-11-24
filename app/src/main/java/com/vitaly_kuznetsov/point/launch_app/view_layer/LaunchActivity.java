@@ -9,10 +9,10 @@ import android.widget.ProgressBar;
 import com.google.gson.Gson;
 import com.vitaly_kuznetsov.point.R;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostModel;
-import com.vitaly_kuznetsov.point.home.HomeActivity;
+import com.vitaly_kuznetsov.point.home.view_layer.activities.HomeActivity;
 import com.vitaly_kuznetsov.point.launch_app.presenter_layer.LaunchViewPresenter;
 import com.vitaly_kuznetsov.point.launch_app.presenter_layer.LaunchViewPresenterInterface;
-import com.vitaly_kuznetsov.point.pre_authentication.view_layer.MainActivity;
+import com.vitaly_kuznetsov.point.main_activity.view_layer.MainActivity;
 
 public class LaunchActivity extends AppCompatActivity implements LaunchViewInterface {
 
@@ -84,7 +84,16 @@ public class LaunchActivity extends AppCompatActivity implements LaunchViewInter
     @Override
     public void goToHomeActivity(String errorText) {
         Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra("Postmodel", "Following Error occurred:" + errorText);
+        intent.putExtra("Error", "Following Error occurred:" + errorText);
+
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void goToHomeActivityOnFailure(String errorText) {
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.putExtra("No_Connection", "Following Error occurred:" + errorText);
 
         startActivity(intent);
         finish();

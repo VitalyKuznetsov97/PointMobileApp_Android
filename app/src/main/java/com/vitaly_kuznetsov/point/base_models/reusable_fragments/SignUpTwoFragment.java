@@ -1,4 +1,4 @@
-package com.vitaly_kuznetsov.point.authentication.view_layer.fragments;
+package com.vitaly_kuznetsov.point.base_models.reusable_fragments;
 
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;

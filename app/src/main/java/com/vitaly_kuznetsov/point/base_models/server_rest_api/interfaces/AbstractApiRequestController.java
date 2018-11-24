@@ -1,4 +1,4 @@
-package com.vitaly_kuznetsov.point.authentication.model_layer.server.interfaces;
+package com.vitaly_kuznetsov.point.base_models.server_rest_api.interfaces;
 
 import android.support.annotation.NonNull;
 
@@ -28,8 +28,6 @@ public abstract class AbstractApiRequestController implements AuthenticationApiI
 
     @Override
     public void start(BasicModelActionsInterface authenticationPresenter) {
-
-        //TODO find out, how to create a viable progressBar
 
         presenter =  authenticationPresenter;
         Retrofit retrofit = BasicRetrofitBuilder.getRetrofitInstance();

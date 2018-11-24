@@ -54,9 +54,20 @@
 
     <!-- home_activity -->
     <string name="title_activity_home">HomeActivity</string>
+    <string name="title_settings">Settings</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_messages">Messages</string>
     <string name="verification_code_edit_text">Verification code</string>
+
+    <!-- fragment_settings -->
+    <string name="settings_description_0">Write a few words about "\n"yourself to raise match chance</string>
+    <string name="phone_number">+000000000</string>
+    <string name="privacy_field">Privacy</string>
+    <string name="about_field">About</string>
+    <string name="setting_option_0">Friends</string>
+    <string name="setting_option_1">Notifications</string>
+    <string name="setting_option_2">Privacy Policy</string>
+    <string name="setting_option_3">Contact Us</string>
+    <string name="setting_option_4">Rate the App</string>
 
 </resources>

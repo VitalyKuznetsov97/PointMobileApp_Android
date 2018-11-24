@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".pre_authentication.view_layer.MainActivity"
+            android:name=".main_activity.view_layer.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
@@ -24,7 +24,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".home.HomeActivity"
+            android:name=".home.view_layer.activities.HomeActivity"
             android:label="@string/title_activity_home"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />

@@ -1,7 +1,7 @@
-package com.vitaly_kuznetsov.point.pre_authentication.presenter_layer;
+package com.vitaly_kuznetsov.point.main_activity.presenter_layer;
 
 import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BaseContract;
-import com.vitaly_kuznetsov.point.pre_authentication.view_layer.MainView;
+import com.vitaly_kuznetsov.point.main_activity.view_layer.MainView;
 
 public class MainViewPresenter implements MainPresenterInterface {
 

@@ -14,8 +14,8 @@ import com.vitaly_kuznetsov.point.R;
 import com.vitaly_kuznetsov.point.authentication.presenter_layer.interfaces.AbstractAuthenticationPresenter;
 import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BaseContract;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostModel;
-import com.vitaly_kuznetsov.point.home.HomeActivity;
-import com.vitaly_kuznetsov.point.pre_authentication.view_layer.MainActivity;
+import com.vitaly_kuznetsov.point.home.view_layer.activities.HomeActivity;
+import com.vitaly_kuznetsov.point.main_activity.view_layer.MainActivity;
 
 public abstract class AbstractAuthenticationView extends AppCompatActivity
         implements BaseContract.View, BasicUiActions {

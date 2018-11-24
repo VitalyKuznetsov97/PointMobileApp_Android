@@ -16,4 +16,8 @@
     <color name="colorErrorPink">#FC96AF</color>
     <color name="colorControlNormal">#68647C</color>
     <color name="colorProgressBar">#D156A2</color>
+    <color name="colorButtonPurple">#FB6592</color>
+    <color name="colorCirclePink">#FC8FAA</color>
+    <color name="colorControlTransparent">#1068647C</color>
+    <color name="colorDescriptionMoreGrey">#949494</color>
 </resources>

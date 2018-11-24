@@ -7,8 +7,8 @@ import com.vitaly_kuznetsov.point.authentication.presenter_layer.interfaces.Abst
 import com.vitaly_kuznetsov.point.authentication.presenter_layer.interfaces.SignUpPresenterInterface;
 import com.vitaly_kuznetsov.point.authentication.view_layer.fragments.GetCodeFragment;
 import com.vitaly_kuznetsov.point.authentication.view_layer.fragments.SendCodeFragment;
-import com.vitaly_kuznetsov.point.authentication.view_layer.fragments.SignUpOneFragment;
-import com.vitaly_kuznetsov.point.authentication.view_layer.fragments.SignUpTwoFragment;
+import com.vitaly_kuznetsov.point.base_models.reusable_fragments.SignUpOneFragment;
+import com.vitaly_kuznetsov.point.base_models.reusable_fragments.SignUpTwoFragment;
 import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.BasicUiActionsSignUp;
 
 public class SignUpViewPresenter extends AbstractAuthenticationPresenter

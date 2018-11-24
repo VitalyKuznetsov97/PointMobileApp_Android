@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/constraint_layout_0"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".home.view_layer.fragments.SearchFragment">
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/guideline_0"
+        android:orientation="vertical"
+
+        app:layout_constraintGuide_percent="0.2267" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/guideline_1"
+        android:orientation="vertical"
+
+        app:layout_constraintGuide_percent="0.7734" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+
+        android:id="@+id/ring_view"
+        android:layout_margin="20dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_0"
+        app:layout_constraintRight_toRightOf="@id/guideline_1"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.vitaly_kuznetsov.point.base_models.custom_views.PointMainButton
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+
+        android:background="@drawable/point_image_custom"
+        android:id="@+id/point_main_button"
+        android:textOn=""
+        android:textOff=""
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_0"
+        app:layout_constraintRight_toRightOf="@id/guideline_1"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

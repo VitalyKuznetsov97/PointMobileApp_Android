@@ -2,7 +2,7 @@ package com.vitaly_kuznetsov.point.launch_app.presenter_layer;
 
 import android.content.Context;
 
-import com.vitaly_kuznetsov.point.authentication.model_layer.server.login.LoginCheckTokenRequestController;
+import com.vitaly_kuznetsov.point.launch_app.model_layer.LoginCheckTokenRequestController;
 import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BaseContract;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostModel;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostPayload;
@@ -35,8 +35,6 @@ public class LaunchViewPresenter implements LaunchViewPresenterInterface {
         this.currentView = null;
     }
 
-    //-----------UI Change State Functions------------
-
     //---------Model Actions----------
 
     @Override
@@ -52,15 +50,15 @@ public class LaunchViewPresenter implements LaunchViewPresenterInterface {
             if (payload.getStatus())
                 currentView.goToHomeActivity(postModel);
             else
-                currentView.goToMainActivity();
+                currentView.goToHomeActivity(payload.getMessage());
         }
         else
-            currentView.goToMainActivity();
+            currentView.goToHomeActivity(postModel.getMessage());
     }
 
     @Override
     public void onFailure(String errorMessage) {
         currentView.stopTimer();
-        currentView.goToHomeActivity(errorMessage);
+        currentView.goToHomeActivityOnFailure(errorMessage);
     }
 }

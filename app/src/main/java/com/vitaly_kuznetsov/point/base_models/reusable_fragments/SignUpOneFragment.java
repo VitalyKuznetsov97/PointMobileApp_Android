@@ -1,4 +1,4 @@
-package com.vitaly_kuznetsov.point.authentication.view_layer.fragments;
+package com.vitaly_kuznetsov.point.base_models.reusable_fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.vitaly_kuznetsov.point.R;
+import com.vitaly_kuznetsov.point.authentication.view_layer.fragments.DatePickerFragment;
 import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.AbstractAuthenticationFragment;
 
 import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.BasicUIActionsFragment;

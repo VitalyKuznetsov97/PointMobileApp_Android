@@ -1,6 +1,6 @@
 package com.vitaly_kuznetsov.point.authentication.model_layer.server.login;
 
-import com.vitaly_kuznetsov.point.authentication.model_layer.server.interfaces.AbstractApiRequestController;
+import com.vitaly_kuznetsov.point.base_models.server_rest_api.interfaces.AbstractApiRequestController;
 import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BasicModelActionsInterface;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostModel;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.request_models.RequestModel;
@@ -20,8 +20,8 @@ public class LoginSubmitSmsRequestController extends AbstractApiRequestControlle
     }
 
     @Override
-    public RequestPayload getPayload(BasicModelActionsInterface authenticationPresenter) {
-        return RequestPayload.createSubmitSmsPayload(authenticationPresenter.getUserDataModel());
+    public RequestPayload getPayload(BasicModelActionsInterface presenter) {
+        return RequestPayload.createSubmitSmsPayload(presenter.getUserDataModel());
     }
 
     @Override
