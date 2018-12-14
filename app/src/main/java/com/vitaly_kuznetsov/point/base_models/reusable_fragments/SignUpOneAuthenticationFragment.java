@@ -1,6 +1,5 @@
 package com.vitaly_kuznetsov.point.base_models.reusable_fragments;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -13,16 +12,16 @@ import android.widget.ToggleButton;
 
 import com.vitaly_kuznetsov.point.R;
 import com.vitaly_kuznetsov.point.authentication.view_layer.fragments.DatePickerFragment;
-import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.AbstractAuthenticationFragment;
 
-import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.BasicUIActionsFragment;
+import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.AbstractAuthenticationFragment;
+import com.vitaly_kuznetsov.point.settings.view_layer.SettingsActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class SignUpOneFragment extends AbstractAuthenticationFragment implements BasicUIActionsFragment {
+public class SignUpOneAuthenticationFragment extends AbstractAuthenticationFragment {
 
     private EditText nameEditText;
     private ToggleButton maleButton;
@@ -42,12 +41,12 @@ public class SignUpOneFragment extends AbstractAuthenticationFragment implements
     @Override
     public void onStop() {
         super.onStop();
-        saveFragmentState();
+        if (!(getActivity() instanceof SettingsActivity))
+            saveFragmentState();
     }
 
     //--------------Initialize Fragment upon creation----------------
 
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void init(View view) {
 

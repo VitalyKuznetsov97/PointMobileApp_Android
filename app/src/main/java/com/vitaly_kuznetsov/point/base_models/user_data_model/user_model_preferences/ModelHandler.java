@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
+import com.vitaly_kuznetsov.point.R;
 import com.vitaly_kuznetsov.point.base_models.user_data_model.model.UserDataModel;
 
 public final class ModelHandler{
@@ -25,8 +26,10 @@ public final class ModelHandler{
         gson = new Gson();
         String json;
 
-        if (!sharedPreferences.contains(UserDataModel.PREFERENCES_DATA_STRING))
-            json = changeUserDataModel(new UserDataModel());
+        if (!sharedPreferences.contains(UserDataModel.PREFERENCES_DATA_STRING)) {
+            UserDataModel userDataModel = new UserDataModel();
+            json = changeUserDataModel(userDataModel);
+        }
         else
             json = sharedPreferences.getString(UserDataModel.PREFERENCES_DATA_STRING, "Error");
 

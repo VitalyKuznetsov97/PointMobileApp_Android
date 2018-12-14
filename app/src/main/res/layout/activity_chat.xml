@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/constraint_layout_main"
+    tools:context=".chat.view_layer.ChatActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+
+        android:id="@+id/constraint_layout_top_bar"
+        android:background="@color/colorTeal"
+
+        app:layout_constraintBottom_toTopOf="@id/top_shade"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintDimensionRatio="1.5:1"
+            android:id="@+id/go_back_layout"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="56dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="20dp"
+
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/go_back_icon_settings"
+                android:id="@+id/go_back"
+
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/top_text"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/colorBlackField"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="22sp"
+            app:autoSizeMaxTextSize="26sp"
+            android:lineHeight="28sp"
+            app:autoSizeStepGranularity="1sp"
+            android:gravity="center"
+            android:text="@string/name_hint"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintDimensionRatio="1.5:1"
+            android:id="@+id/avatar_image_layout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="56dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="11dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="11dp"
+
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/male_background_pic"
+                android:id="@+id/avatar_image_view"
+
+                app:layout_constraintRight_toRightOf="parent"
+
+
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:background="@drawable/top_bar_shade"
+        android:id="@+id/top_shade"
+        app:layout_constraintBottom_toTopOf="@id/constraint_layout_messages"
+        app:layout_constraintTop_toBottomOf="@id/constraint_layout_top_bar"/>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraint_layout_messages"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintBottom_toTopOf="@id/bottom_shade"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_shade">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle_view_messages"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:background="@drawable/bg"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:background="@drawable/bottom_bar_shade"
+        android:id="@+id/bottom_shade"
+        app:layout_constraintBottom_toTopOf="@id/constraint_layout_0"
+        app:layout_constraintTop_toBottomOf="@id/constraint_layout_messages"/>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraint_layout_0"
+        android:layout_width="0dp"
+
+        android:layout_height="49dp"
+        android:background="@color/colorTeal"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraint_layout_messages"
+        app:layout_constraintVertical_bias="1.0">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraint_layout_1"
+            android:layout_width="0dp"
+
+            android:layout_height="0dp"
+            android:background="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/send_button"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/message_edit_text"
+                android:layout_width="0dp"
+
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/message_hint"
+                android:inputType="text"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:textColorHint="@color/colorSkipGrey"
+                android:textSize="16sp"
+
+                android:theme="@style/EditTextName"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/smile_image"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill,TextFields" />
+
+            <ImageView
+                android:id="@+id/smile_image"
+                android:layout_width="43dp"
+
+                android:layout_height="41dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="19dp"
+                android:layout_marginBottom="4dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:paddingStart="12dp"
+                android:paddingTop="7dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="6dp"
+                android:src="@drawable/smile_icon"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/message_edit_text"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/send_button"
+            android:layout_width="49dp"
+            android:layout_height="54dp"
+
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:paddingStart="6dp"
+            android:paddingTop="7dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="6dp"
+
+            android:src="@drawable/send_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

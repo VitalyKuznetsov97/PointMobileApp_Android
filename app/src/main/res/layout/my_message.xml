@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="3.5dp"
+    android:paddingBottom="3.5dp"
+    android:paddingEnd="25dp"
+    android:paddingStart="60dp"
+    android:clipToPadding="false">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/message_body"
+        android:maxWidth="240dp"
+        android:background="@drawable/my_message_buble"
+        android:textColor="@color/colorBlackField"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingStart="10dp"
+        android:paddingEnd="46dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:textSize="15sp"
+        android:layout_alignParentEnd="true"
+        android:text="@string/message_hint" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:paddingBottom="10dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="5dp"
+
+        android:text="@string/message_time_text"
+        android:id="@+id/message_time"
+        android:fontFamily="@font/roboto_light"
+        android:textSize="12sp"
+
+        android:layout_alignEnd="@id/message_body"
+        android:layout_alignBottom="@id/message_body"/>
+
+</RelativeLayout>

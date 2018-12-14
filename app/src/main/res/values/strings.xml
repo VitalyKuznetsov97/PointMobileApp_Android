@@ -60,7 +60,7 @@
     <string name="verification_code_edit_text">Verification code</string>
 
     <!-- fragment_settings -->
-    <string name="settings_description_0">Write a few words about "\n"yourself to raise match chance</string>
+    <string name="settings_description_0">Write a few words about "\n"yourself to raise match chance </string>
     <string name="phone_number">+000000000</string>
     <string name="privacy_field">Privacy</string>
     <string name="about_field">About</string>
@@ -69,5 +69,34 @@
     <string name="setting_option_2">Privacy Policy</string>
     <string name="setting_option_3">Contact Us</string>
     <string name="setting_option_4">Rate the App</string>
+
+    <!-- fragment_search -->
+    <string name="search_description_0">Tap on point "\n"to share your location</string>
+
+    <!-- settings activity -->
+    <string name="settings_top_text">Edit profile</string>
+    <string name="general_field">General</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="preferences_field">Preferences</string>
+
+    <!-- alert dialog -->
+    <string name="cancel_button">Cancel</string>
+    <string name="accept_button">Yes</string>
+    <string name="alert_title_0">Save changes</string>
+    <string name="alert_title_1">Exit</string>
+    <string name="alert_title_2">Empty fields</string>
+    <string name="alert_text_0">Do you want to save the changes?</string>
+    <string name="alert_text_1">Do you want to exit? "\n"Changes will not be applied.</string>
+    <string name="alert_text_2">Some fields might be empty! "\n"Please, fill them before saving the changes.</string>
+
+    <!-- chat activity -->
+    <string name="message_hint">Type your message…</string>
+    <string name="message_time_text">00:00</string>
+    <string name="title_activity_chat">ChatActivity</string>
+
+    <!-- fragment_chat -->
+    <string name="chat_fragment_description_0">Oops!</string>
+    <string name="chat_fragment_description_1">You do not have any messages yet.</string>
+    <string name="chat_fragment_description_2">Refresh Inbox</string>
 
 </resources>

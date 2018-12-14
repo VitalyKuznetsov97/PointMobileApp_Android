@@ -10,9 +10,9 @@ import retrofit2.Callback;
 
 interface AuthenticationApiInterface extends Callback<PostModel> {
 
-    void start(BasicModelActionsInterface authenticationPresenter);
+    void start(BasicModelActionsInterface presenter);
 
-    RequestPayload getPayload(BasicModelActionsInterface authenticationPresenter);
+    RequestPayload getPayload(BasicModelActionsInterface presenter);
     Call<PostModel> getApi(RequestModel requestModel);
 
 }

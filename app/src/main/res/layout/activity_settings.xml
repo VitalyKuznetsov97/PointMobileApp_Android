@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+
+android:id="@+id/constraint_layout_main"
+
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+
+tools:context=".settings.view_layer.SettingsActivity" >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+
+        android:id="@+id/constraint_layout_top_bar"
+        android:background="@color/colorTeal"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintDimensionRatio="1.5:1"
+            android:id="@+id/go_back_layout"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="56dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="20dp"
+
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/go_back_icon_settings"
+                android:id="@+id/go_back"
+
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/top_text"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/colorBlackField"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="22sp"
+            app:autoSizeMaxTextSize="26sp"
+            android:lineHeight="28sp"
+            app:autoSizeStepGranularity="1sp"
+            android:gravity="center"
+            android:text="@string/settings_top_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintDimensionRatio="1.5:1"
+            android:id="@+id/save_icon_layout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="56dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="16dp"
+
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/save_icon"
+                android:id="@+id/save_icon"
+
+                app:layout_constraintRight_toRightOf="parent"
+
+
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+
+        android:id="@+id/top_bar_shade_image_view"
+        android:background="@drawable/top_bar_shade"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraint_layout_top_bar"
+        tools:ignore="ContentDescription" />
+
+    <ScrollView
+        android:id="@+id/scroll_view_settings"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/top_bar_shade_image_view">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/constraint_layout_scroll">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/bg"
+                android:id="@+id/bg_one"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/bg"
+                app:layout_constraintTop_toBottomOf="@id/bg_one"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <android.support.constraint.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/guideline_0"
+                android:orientation="vertical"
+
+                app:layout_constraintGuide_percent="0.210666" />
+
+            <android.support.constraint.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/guideline_1"
+                android:orientation="vertical"
+
+                app:layout_constraintGuide_percent="0.789333" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:0.067"
+
+                android:layout_marginTop="10dp"
+                android:id="@+id/general_field"
+                android:background="@color/colorControlTransparent"
+                android:text="@string/general_field"
+                android:gravity="center"
+                android:textColor="@color/colorBlackField"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_light"
+
+                app:layout_constraintBottom_toTopOf="@id/constraint_layout_user_card"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="0.751968:1.1"
+
+                android:layout_marginTop="26dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:id="@+id/constraint_layout_user_card"
+
+                app:layout_constraintBottom_toTopOf="@id/constraint_layout_1"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_0"
+                app:layout_constraintRight_toRightOf="@id/guideline_1"
+                app:layout_constraintTop_toBottomOf="@id/general_field">
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="0.8188153:1.2"
+
+                android:layout_marginTop="17dp"
+                android:id="@+id/constraint_layout_1"
+
+                app:layout_constraintBottom_toTopOf="@id/preferences_field"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_0"
+                app:layout_constraintRight_toRightOf="@id/guideline_1"
+                app:layout_constraintTop_toBottomOf="@id/constraint_layout_user_card">
+
+            </android.support.constraint.ConstraintLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:0.067"
+
+                android:id="@+id/preferences_field"
+                android:background="@color/colorControlTransparent"
+                android:text="@string/preferences_field"
+                android:gravity="center"
+                android:textColor="@color/colorBlackField"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_light"
+
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/constraint_layout_1"
+                app:layout_constraintBottom_toTopOf="@id/constraint_layout_2" />
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="0.785953:1.1"
+
+                android:layout_marginTop="36dp"
+                android:id="@+id/constraint_layout_2"
+
+                app:layout_constraintLeft_toLeftOf="@id/guideline_0"
+                app:layout_constraintRight_toRightOf="@id/guideline_1"
+                app:layout_constraintTop_toBottomOf="@id/preferences_field"
+                app:layout_constraintBottom_toTopOf="@id/space_0">
+
+            </android.support.constraint.ConstraintLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:id="@+id/space_0"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_0"
+                app:layout_constraintRight_toRightOf="@id/guideline_1"
+                app:layout_constraintTop_toBottomOf="@id/constraint_layout_2" />
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

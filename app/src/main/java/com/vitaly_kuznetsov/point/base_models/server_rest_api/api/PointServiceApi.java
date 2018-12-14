@@ -27,4 +27,12 @@ public interface PointServiceApi {
     Call<PostModel> loginCheckToken(@Body RequestModel requestModel);
 
     //---------------Home------------------
+
+    @POST("/history/get")
+    Call<PostModel> historyGet(@Body RequestModel requestModel);
+
+    //---------------Settings------------------
+
+    @POST("/profile/editprofile")
+    Call<PostModel> profileEditProfile(@Body RequestModel requestModel);
 }

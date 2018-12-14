@@ -85,25 +85,21 @@ public class PointMainButton extends ToggleButton implements Animation.Animation
         if (this.isChecked()){
             if (eventAction == MotionEvent.ACTION_UP)
                 performClick();
-            invalidate();
-            return true;
-        }
-
-        int radius = this.getWidth()/2;
-        int x = (int)event.getX() - radius;
-        int y = (int)event.getY() - radius;
-
-        if (Math.pow(x, 2) + Math.pow(y, 2) > Math.pow(radius, 2)) {
-            startRotationAnimation(LONG_DURATION);
         }
         else {
-            startRotationAnimation(SHORT_DURATION);
-            if (eventAction == MotionEvent.ACTION_UP)
-                performClick();
+            int radius = this.getWidth() / 2;
+            int x = (int) event.getX() - radius;
+            int y = (int) event.getY() - radius;
+
+            if (Math.pow(x, 2) + Math.pow(y, 2) > Math.pow(radius, 2)) {
+                startRotationAnimation(LONG_DURATION);
+            } else {
+                startRotationAnimation(SHORT_DURATION);
+                if (eventAction == MotionEvent.ACTION_UP)
+                    performClick();
+            }
         }
-
         invalidate();
-
         return true;
     }
 
@@ -127,5 +123,15 @@ public class PointMainButton extends ToggleButton implements Animation.Animation
             timer.cancel();
             timer.start();
         }
+    }
+
+    public void stopAnimation(){
+        this.clearAnimation();
+
+        rotate.cancel();
+        rotate = null;
+
+        timer.cancel();
+        timer = null;
     }
 }

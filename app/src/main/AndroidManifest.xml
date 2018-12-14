@@ -30,7 +30,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".launch_app.view_layer.LaunchActivity"
-            android:launchMode="singleTask"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,6 +38,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".settings.view_layer.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".chat.view_layer.ChatActivity"
+            android:label="@string/title_activity_chat"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

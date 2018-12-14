@@ -1,9 +1,12 @@
 package com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models;
 
+import java.util.ArrayList;
+
 public class Data {
 
     private UserData userData;
     private String token;
+    private ArrayList<Chat> chats;
 
     // Getter Methods
 
@@ -13,6 +16,10 @@ public class Data {
 
     public String getToken() {
         return token;
+    }
+
+    public ArrayList<Chat> getChats() {
+        return chats;
     }
 
     // Setter Methods
@@ -25,4 +32,7 @@ public class Data {
         this.token = token;
     }
 
+    public void setChats(ArrayList<Chat> chats) {
+        this.chats = chats;
+    }
 }

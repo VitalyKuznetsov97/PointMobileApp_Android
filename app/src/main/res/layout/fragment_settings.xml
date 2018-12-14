@@ -57,106 +57,25 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintDimensionRatio="1:1"
 
-            android:layout_marginTop="13dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="13dp"
-            android:id="@+id/constraint_layout_picture"
-            android:background="@drawable/female_frame"
+            android:id="@+id/constraint_layout_user_card_horizontal"
 
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
-
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:scaleX="0.95"
-                android:scaleY="0.95"
-                android:alpha="0.3"
-
-                android:id="@+id/user_avatar"
-                android:src="@drawable/female_background_pic"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription" />
+            app:layout_constraintRight_toLeftOf="@id/pencil">
 
         </android.support.constraint.ConstraintLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-
-            android:id="@+id/linear_layout_info"
-            android:orientation="vertical"
-            android:layout_marginStart="18dp"
-            android:layout_marginEnd="20dp"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/constraint_layout_picture"
-            app:layout_constraintRight_toLeftOf="@id/pencil"
-            app:layout_constraintTop_toTopOf="parent" >
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/text_name"
-                android:layout_width="match_parent"
-                android:layout_height="24dp"
-
-                android:layout_marginTop="13dp"
-                android:layout_marginBottom="3dp"
-                android:fontFamily="@font/roboto_regular"
-                android:gravity="start"
-                android:text="@string/name_hint"
-                android:textColor="@color/colorBlackField"
-                app:autoSizeMaxTextSize="22sp"
-                app:autoSizeMinTextSize="18sp"
-                app:autoSizeStepGranularity="1sp"
-                app:autoSizeTextType="uniform" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/text_description"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/roboto_light_italic"
-                android:gravity="start"
-                android:text="@string/settings_description_0"
-                android:textColor="@color/colorDescriptionGrey"
-                app:autoSizeMaxTextSize="14sp"
-                app:autoSizeMinTextSize="10sp"
-                app:autoSizeStepGranularity="1sp"
-                app:autoSizeTextType="uniform" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/text_phone"
-                android:layout_width="match_parent"
-                android:layout_height="24dp"
-
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="9dp"
-                android:fontFamily="@font/roboto_regular"
-                android:gravity="start"
-                android:text="@string/phone_number"
-                android:textColor="@color/colorDescriptionMoreGrey"
-                app:autoSizeMaxTextSize="16sp"
-                app:autoSizeMinTextSize="14sp"
-                app:autoSizeStepGranularity="1sp"
-                app:autoSizeTextType="uniform" />
-
-        </LinearLayout>
-
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
 
             android:layout_marginEnd="10dp"
             android:id="@+id/pencil"
-            android:background="@drawable/pencil_pic"
+            android:padding="4dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/pencil_pic"
 
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -216,6 +135,7 @@
             android:id="@+id/settings_button_0"
             android:text="@string/setting_option_0"
             android:gravity="fill"
+            android:background="?android:attr/selectableItemBackground"
             android:textColor="@color/colorDescriptionGrey"
             android:textSize="17sp"
             android:fontFamily="@font/roboto_regular"
@@ -255,6 +175,7 @@
 
             android:id="@+id/settings_button_1"
             android:text="@string/setting_option_1"
+            android:background="?android:attr/selectableItemBackground"
             android:gravity="fill"
             android:textColor="@color/colorDescriptionGrey"
             android:textSize="17sp"
@@ -296,6 +217,7 @@
             android:id="@+id/settings_button_2"
             android:text="@string/setting_option_2"
             android:gravity="fill"
+            android:background="?android:attr/selectableItemBackground"
             android:textColor="@color/colorDescriptionGrey"
             android:textSize="17sp"
             android:fontFamily="@font/roboto_regular"
@@ -368,6 +290,7 @@
             android:fontFamily="@font/roboto_regular"
             android:gravity="fill"
             android:text="@string/setting_option_3"
+            android:background="?android:attr/selectableItemBackground"
             android:textColor="@color/colorDescriptionGrey"
             android:textSize="17sp"
             app:layout_constraintBottom_toTopOf="@id/divider_2"
@@ -407,6 +330,7 @@
 
             android:fontFamily="@font/roboto_regular"
             android:gravity="fill"
+            android:background="?android:attr/selectableItemBackground"
             android:text="@string/setting_option_4"
             android:textColor="@color/colorDescriptionGrey"
             android:textSize="17sp"

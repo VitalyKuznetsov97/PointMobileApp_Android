@@ -10,6 +10,5 @@ public interface LaunchViewInterface extends BaseContract.View {
     void goToMainActivity();
     void goToHomeActivity(PostModel postModel);
     void goToHomeActivity(String errorText);
-    void goToHomeActivityOnFailure(String errorText);
 
 }

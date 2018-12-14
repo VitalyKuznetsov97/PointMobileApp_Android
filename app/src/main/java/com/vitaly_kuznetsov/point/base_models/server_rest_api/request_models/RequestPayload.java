@@ -8,6 +8,7 @@ public class RequestPayload {
     private String phone;
     private String sms;
     private String nickname;
+    private String myBio;
     private String myAge;
     private String myGender;
     private String yourAge;
@@ -57,6 +58,27 @@ public class RequestPayload {
         return payload;
     }
 
+    public static RequestPayload createProfileEditProfile(UserDataModel userDataModel){
+        RequestPayload payload = new RequestPayload();
+
+        payload.setToken(userDataModel.getToken());
+        payload.setNickname(userDataModel.getNickname());
+        payload.setMyAge(String.valueOf(userDataModel.getMyAge()));
+        payload.setMyGender(String.valueOf(userDataModel.getMyGender()));
+        payload.setYourAge(userDataModel.getYourAgeString());
+        payload.setYourGender(String.valueOf(userDataModel.getYourGender()));
+
+        return payload;
+    }
+
+    public static RequestPayload createHistoryGet(UserDataModel userDataModel){
+        RequestPayload payload = new RequestPayload();
+
+        payload.setToken(userDataModel.getToken());
+
+        return payload;
+    }
+
     // Getter Methods
 
     public String getPhone() {
@@ -69,6 +91,10 @@ public class RequestPayload {
 
     public String getNickname() {
         return nickname;
+    }
+
+    public String getMyBio() {
+        return myBio;
     }
 
     public String getMyAge() {
@@ -103,6 +129,10 @@ public class RequestPayload {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public void setMyBio(String myBio) {
+        this.myBio = myBio;
     }
 
     public void setMyAge(String myAge) {

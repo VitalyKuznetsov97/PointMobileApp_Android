@@ -1,6 +1,6 @@
 package com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models;
 
-class UserData {
+public class UserData {
 
     private String id;
     private String telephoneHash;

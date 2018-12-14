@@ -6,5 +6,4 @@ interface BasicAuthenticationStateActions {
     boolean onBackPressed();
     void onStopView();
 
-    boolean mayStartHttpRequest();
 }

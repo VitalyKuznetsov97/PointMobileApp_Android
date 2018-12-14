@@ -6,6 +6,7 @@ import com.vitaly_kuznetsov.point.base_models.user_data_model.model.UserDataMode
 public interface BasicModelActionsInterface {
 
     UserDataModel getUserDataModel();
+    boolean mayStartHttpRequest();
     void onResponse(PostModel postModel);
     void onFailure(String errorMessage);
 

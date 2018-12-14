@@ -19,21 +19,20 @@ public abstract class AbstractApiRequestController implements AuthenticationApiI
     private BasicModelActionsInterface presenter;
 
     /*----------------------------------------------------------
-              A base class, that starts http requests from
-             /server/login and /server/registration
+             A base class, that starts http requests
 
              Uses PointServiceApi
      ----------------------------------------------------------
      */
 
     @Override
-    public void start(BasicModelActionsInterface authenticationPresenter) {
+    public void start(BasicModelActionsInterface presenter) {
 
-        presenter =  authenticationPresenter;
+        this.presenter = presenter;
         Retrofit retrofit = BasicRetrofitBuilder.getRetrofitInstance();
         api = retrofit.create(PointServiceApi.class);
 
-        RequestPayload requestPayload = getPayload(authenticationPresenter);
+        RequestPayload requestPayload = getPayload(presenter);
 
         RequestModel requestModel = new RequestModel(requestPayload);
 
@@ -44,11 +43,13 @@ public abstract class AbstractApiRequestController implements AuthenticationApiI
 
     @Override
     public void onResponse(@NonNull Call<PostModel> call, @NonNull Response<PostModel> response) {
-        presenter.onResponse(response.body());
+        if (presenter != null)
+            presenter.onResponse(response.body());
     }
 
     @Override
-    public void onFailure(@NonNull Call<PostModel> call, @NonNull Throwable t) {
-        presenter.onFailure(t.getMessage());
+    public void onFailure(@NonNull Call<PostModel> call, @NonNull Throwable throwable) {
+        if (presenter != null)
+            presenter.onFailure(throwable.getMessage());
     }
 }

@@ -5,11 +5,11 @@ import com.vitaly_kuznetsov.point.authentication.model_layer.server.registration
 import com.vitaly_kuznetsov.point.authentication.model_layer.server.registration.RegistrationRegisterUserRequestController;
 import com.vitaly_kuznetsov.point.authentication.presenter_layer.interfaces.AbstractAuthenticationPresenter;
 import com.vitaly_kuznetsov.point.authentication.presenter_layer.interfaces.SignUpPresenterInterface;
-import com.vitaly_kuznetsov.point.authentication.view_layer.fragments.GetCodeFragment;
-import com.vitaly_kuznetsov.point.authentication.view_layer.fragments.SendCodeFragment;
-import com.vitaly_kuznetsov.point.base_models.reusable_fragments.SignUpOneFragment;
-import com.vitaly_kuznetsov.point.base_models.reusable_fragments.SignUpTwoFragment;
+import com.vitaly_kuznetsov.point.authentication.view_layer.fragments.GetCodeAuthenticationFragment;
+import com.vitaly_kuznetsov.point.authentication.view_layer.fragments.SendCodeAuthenticationFragment;
 import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.BasicUiActionsSignUp;
+import com.vitaly_kuznetsov.point.base_models.reusable_fragments.SignUpOneAuthenticationFragment;
+import com.vitaly_kuznetsov.point.base_models.reusable_fragments.SignUpTwoAuthenticationFragment;
 
 public class SignUpViewPresenter extends AbstractAuthenticationPresenter
         implements SignUpPresenterInterface {
@@ -22,13 +22,13 @@ public class SignUpViewPresenter extends AbstractAuthenticationPresenter
             ((BasicUiActionsSignUp) this.currentView).setSteps(this.currentStep);
 
             if (currentStep == 0)
-                this.currentView.showAuthenticationFragment(new SignUpOneFragment());
+                this.currentView.showAuthenticationFragment(new SignUpOneAuthenticationFragment());
             else if (currentStep == 1)
-                this.currentView.showAuthenticationFragment(new SignUpTwoFragment());
+                this.currentView.showAuthenticationFragment(new SignUpTwoAuthenticationFragment());
             else if (currentStep == 2)
-                this.currentView.showAuthenticationFragment(new GetCodeFragment());
+                this.currentView.showAuthenticationFragment(new GetCodeAuthenticationFragment());
             else if (currentStep == 3)
-                this.currentView.showAuthenticationFragment(new SendCodeFragment());
+                this.currentView.showAuthenticationFragment(new SendCodeAuthenticationFragment());
             else if (currentStep == 4) {
                 this.userDataModel.setToken(this.postModel.getPayload().getData().getToken());
                 currentView.goToHomeActivity(this.postModel);
@@ -42,7 +42,7 @@ public class SignUpViewPresenter extends AbstractAuthenticationPresenter
     @Override
     public void onSkipTextViewClicked() {
         currentStep++;
-        this.currentView.showAuthenticationFragment(new GetCodeFragment());
+        this.currentView.showAuthenticationFragment(new GetCodeAuthenticationFragment());
         ((BasicUiActionsSignUp) this.currentView).setSteps(this.currentStep);
     }
 

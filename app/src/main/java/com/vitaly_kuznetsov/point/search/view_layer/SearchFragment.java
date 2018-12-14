@@ -1,11 +1,10 @@
-package com.vitaly_kuznetsov.point.home.view_layer.fragments;
+package com.vitaly_kuznetsov.point.search.view_layer;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +15,11 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.vitaly_kuznetsov.point.R;
 import com.vitaly_kuznetsov.point.base_models.custom_views.PointMainButton;
-import com.vitaly_kuznetsov.point.home.view_layer.interfaces.BasicHomeFragment;
+import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BasicFragmentInterface;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -29,7 +29,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Predicate;
 
-public class SearchFragment extends Fragment implements BasicHomeFragment {
+public class SearchFragment extends Fragment implements BasicFragmentInterface, SearchFragmentInterface {
 
     private ConstraintLayout fragmentLayout;
     private View ringView;
@@ -37,6 +37,8 @@ public class SearchFragment extends Fragment implements BasicHomeFragment {
     private float width = 0;
     private int animationDuration;
     private ViewGroup.LayoutParams layoutParams;
+    private PointMainButton pointMainButton;
+    private TextView searchText;
 
     private Context context;
 
@@ -54,15 +56,30 @@ public class SearchFragment extends Fragment implements BasicHomeFragment {
         init(view);
         return view;
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if (pointMainButton.isChecked()) {
+            pointMainButton.setChecked(false);
+        }
+
+        pointMainButton.stopAnimation();
+    }
+
     //--------------Initialize Fragment upon creation----------------
 
     @Override
     public void init(View view) {
-        PointMainButton pointMainButton = view.findViewById(R.id.point_main_button);
+        pointMainButton = view.findViewById(R.id.point_main_button);
 
         ringView = view.findViewById(R.id.ring_view);
         layoutParams = ringView.getLayoutParams();
+        layoutParams.height *= PointMainButton.SCALE;
+        layoutParams.width *= PointMainButton.SCALE;
 
+        searchText = view.findViewById(R.id.text_description_0);
         fragmentLayout = view.findViewById(R.id.constraint_layout_0);
         imageViewArrayList = new ArrayList<>();
         pointMainButton.setOnCheckedChangeListener(checkedChangeListener());
@@ -70,32 +87,44 @@ public class SearchFragment extends Fragment implements BasicHomeFragment {
         context = view.getContext();
     }
 
+    @Override
+    public boolean isReadyToProgress() {
+        return true;
+    }
+
     private CompoundButton.OnCheckedChangeListener checkedChangeListener(){
         return new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked){
-                    recursiveAnimation();
-                    Log.i("Animation Info: ", "Checked");
+
                 }
                 else {
-                    Log.i("Animation Info: ", "NOTChecked");
-                    disposableInterval.dispose();
-                    for (int i = 0; i < 5; i++){
-                        fragmentLayout.removeView(imageViewArrayList.get(i));
-                        imageViewArrayList.get(i).clearAnimation();
-                    }
-                    imageViewArrayList.clear();
+
                 }
             }
         };
     }
 
-    private void recursiveAnimation(){
+    @Override
+    public void stopAnimation(){
+        disposableInterval.dispose();
+        for (int i = 0; i < 5; i++){
+            fragmentLayout.removeView(imageViewArrayList.get(i));
+            imageViewArrayList.get(i).clearAnimation();
+        }
+        imageViewArrayList.clear();
+
+        searchText.setText(getResources().getText(R.string.search_description_0));
+    }
+
+    @Override
+    public void startAnimation(){
 
         if (width == 0){
             width = ringView.getWidth() * PointMainButton.SCALE;
             width /= 2;
+            fragmentLayout.removeView(ringView);
         }
 
         float speed = (width * (RING_FINAL_WIDTH_MULTIPLIER - 1)) / 5;
@@ -112,14 +141,14 @@ public class SearchFragment extends Fragment implements BasicHomeFragment {
 
         Predicate<Long> isLessThanFive = new Predicate<Long>() {
             @Override
-            public boolean test(Long seconds) throws Exception{
+            public boolean test(Long seconds) {
                 return seconds < 5;
             }
         };
 
         final Consumer<Long> createRing = new Consumer<Long>() {
             @Override
-            public void accept(Long attempt) throws Exception {
+            public void accept(Long attempt) {
                 ScaleAnimation animation =
                         new ScaleAnimation(1.0F, RING_FINAL_WIDTH_MULTIPLIER, 1.0F, RING_FINAL_WIDTH_MULTIPLIER,
                                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
@@ -145,5 +174,7 @@ public class SearchFragment extends Fragment implements BasicHomeFragment {
                 .takeWhile(isLessThanFive).doOnNext(createRing);
 
         disposableInterval = observable.subscribe();
+
+        searchText.setText("");
     }
 }

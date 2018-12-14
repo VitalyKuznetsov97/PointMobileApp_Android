@@ -20,4 +20,6 @@
     <color name="colorCirclePink">#FC8FAA</color>
     <color name="colorControlTransparent">#1068647C</color>
     <color name="colorDescriptionMoreGrey">#949494</color>
+    <color name="colorMaleButton">#9391F8</color>
+
 </resources>

@@ -13,11 +13,11 @@ import android.widget.ToggleButton;
 
 import com.vitaly_kuznetsov.point.R;
 import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.AbstractAuthenticationFragment;
-import com.vitaly_kuznetsov.point.authentication.view_layer.interfaces.BasicUIActionsFragment;
+import com.vitaly_kuznetsov.point.settings.view_layer.SettingsActivity;
 
 import java.util.ArrayList;
 
-public class SignUpTwoFragment extends AbstractAuthenticationFragment implements BasicUIActionsFragment {
+public class SignUpTwoAuthenticationFragment extends AbstractAuthenticationFragment {
 
     private ToggleButton allAgeToggleButton;
     private ArrayList<ToggleButton> ageToggleButtonArrayList;
@@ -38,7 +38,8 @@ public class SignUpTwoFragment extends AbstractAuthenticationFragment implements
     @Override
     public void onStop() {
         super.onStop();
-        saveFragmentState();
+        if (!(getActivity() instanceof SettingsActivity))
+            saveFragmentState();
     }
 
     //--------------Initialize Fragment upon creation----------------

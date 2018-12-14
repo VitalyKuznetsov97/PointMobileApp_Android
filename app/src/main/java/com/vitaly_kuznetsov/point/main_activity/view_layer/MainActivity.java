@@ -9,6 +9,7 @@ import android.widget.Button;
 import com.vitaly_kuznetsov.point.R;
 import com.vitaly_kuznetsov.point.authentication.view_layer.activities.LogInActivity;
 import com.vitaly_kuznetsov.point.authentication.view_layer.activities.SignUpActivity;
+import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BaseContract;
 import com.vitaly_kuznetsov.point.main_activity.presenter_layer.MainViewPresenter;
 
 public class MainActivity extends AppCompatActivity implements MainView {
@@ -64,5 +65,10 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 mainViewPresenter.onSignUpClicked();
             }
         });
+    }
+
+    @Override
+    public BaseContract.Presenter getPresenter() {
+        return mainViewPresenter;
     }
 }

@@ -8,6 +8,7 @@ import android.widget.ProgressBar;
 
 import com.google.gson.Gson;
 import com.vitaly_kuznetsov.point.R;
+import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BaseContract;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostModel;
 import com.vitaly_kuznetsov.point.home.view_layer.activities.HomeActivity;
 import com.vitaly_kuznetsov.point.launch_app.presenter_layer.LaunchViewPresenter;
@@ -48,6 +49,11 @@ public class LaunchActivity extends AppCompatActivity implements LaunchViewInter
         currentPresenter.attachView(this);
     }
 
+    @Override
+    public BaseContract.Presenter getPresenter() {
+        return currentPresenter;
+    }
+
     //------------UI Actions-----------------
 
     @Override
@@ -85,15 +91,6 @@ public class LaunchActivity extends AppCompatActivity implements LaunchViewInter
     public void goToHomeActivity(String errorText) {
         Intent intent = new Intent(this, HomeActivity.class);
         intent.putExtra("Error", "Following Error occurred:" + errorText);
-
-        startActivity(intent);
-        finish();
-    }
-
-    @Override
-    public void goToHomeActivityOnFailure(String errorText) {
-        Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra("No_Connection", "Following Error occurred:" + errorText);
 
         startActivity(intent);
         finish();

@@ -1,9 +1,8 @@
 package com.vitaly_kuznetsov.point.authentication.view_layer.interfaces;
 
-import com.vitaly_kuznetsov.point.authentication.presenter_layer.interfaces.AbstractAuthenticationPresenter;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostModel;
 
-interface BasicUiActions {
+interface BasicUiActionsAuthentication {
 
     //Intents
     void changeAuthenticationActivity();
@@ -17,11 +16,10 @@ interface BasicUiActions {
     void hideError();
 
     //Show or remove Fragment
-    void showAuthenticationFragment(AuthenticationFragment newFragment);
+    void showAuthenticationFragment(AbstractAuthenticationFragment newFragment);
     void removeAuthenticationFragment();
 
     //Getters and Setters
-    AbstractAuthenticationPresenter getPresenter();
-    AuthenticationFragment getFragment();
-    void setFragment(AuthenticationFragment fragment);
+    AbstractAuthenticationFragment getFragment();
+    void setFragment(AbstractAuthenticationFragment fragment);
 }

@@ -1,0 +1,118 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/constraint_layout_main"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:alpha="0"
+
+    tools:context=".messages_preview.view_layer.ChatPreviewFragment">
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/guideline_0"
+        android:orientation="vertical"
+
+        app:layout_constraintGuide_percent="0.30133" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/guideline_1"
+        android:orientation="vertical"
+
+        app:layout_constraintGuide_percent="0.70133" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/guideline_2"
+        android:orientation="vertical"
+
+        app:layout_constraintGuide_percent="0.12266" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/guideline_3"
+        android:orientation="vertical"
+
+        app:layout_constraintGuide_percent="0.87733" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintVertical_bias="0.17311"
+
+        android:background="@drawable/no_messages_icon"
+        android:id="@+id/no_messages_icon"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_0"
+        app:layout_constraintRight_toRightOf="@id/guideline_1"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/text_description_0"
+        android:text="@string/chat_fragment_description_0"
+        android:textColor="@color/colorDescriptionGrey"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="18sp"
+        android:lineHeight="21sp"
+        android:gravity="center"
+        app:layout_constraintVertical_bias="0.17"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_2"
+        app:layout_constraintRight_toRightOf="@id/guideline_3"
+        app:layout_constraintTop_toBottomOf="@id/no_messages_icon"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/text_description_1"
+        android:text="@string/chat_fragment_description_1"
+        android:textColor="@color/colorDescriptionGrey"
+        android:fontFamily="@font/roboto_regular"
+        app:autoSizeMinTextSize="14sp"
+        app:autoSizeMaxTextSize="16sp"
+        app:autoSizeStepGranularity="1sp"
+        android:gravity="center"
+        app:layout_constraintVertical_bias="0.05"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/guideline_2"
+        app:layout_constraintRight_toRightOf="@id/guideline_3"
+        app:layout_constraintTop_toBottomOf="@id/text_description_0"/>
+
+    <TextView
+        android:id="@+id/text_description_2"
+        android:layout_width="0dp"
+
+        android:layout_height="17dp"
+        android:fontFamily="@font/roboto_light_italic"
+        android:gravity="center"
+        android:text="@string/chat_fragment_description_2"
+        android:textColor="@color/colorDescriptionGrey"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintLeft_toLeftOf="@id/guideline_2"
+        app:layout_constraintRight_toRightOf="@id/guideline_3"
+        app:layout_constraintTop_toBottomOf="@id/text_description_1"
+        app:layout_constraintVertical_bias="0.05" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,8 +1,6 @@
 package com.vitaly_kuznetsov.point.authentication.view_layer.interfaces;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -18,11 +16,11 @@ import com.vitaly_kuznetsov.point.home.view_layer.activities.HomeActivity;
 import com.vitaly_kuznetsov.point.main_activity.view_layer.MainActivity;
 
 public abstract class AbstractAuthenticationView extends AppCompatActivity
-        implements BaseContract.View, BasicUiActions {
+        implements BaseContract.View, BasicUiActionsAuthentication {
 
     protected AbstractAuthenticationPresenter currentPresenter;
     protected FragmentManager fragmentManager;
-    protected AuthenticationFragment currentFragment;
+    protected AbstractAuthenticationFragment currentFragment;
 
     //----------Change of View State-------------
 
@@ -32,15 +30,15 @@ public abstract class AbstractAuthenticationView extends AppCompatActivity
     }
 
     @Override
-    public void showAuthenticationFragment(AuthenticationFragment newFragment) {
+    public void showAuthenticationFragment(AbstractAuthenticationFragment newFragment) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         if (this.currentFragment == null) {
-            fragmentTransaction.add(R.id.fragment_constraint_layout, (Fragment) newFragment);
+            fragmentTransaction.add(R.id.fragment_constraint_layout, newFragment);
         }
         else {
             this.currentFragment.saveFragmentState();
-            fragmentTransaction.replace(R.id.fragment_constraint_layout, (Fragment) newFragment);
+            fragmentTransaction.replace(R.id.fragment_constraint_layout, newFragment);
             fragmentTransaction.addToBackStack(null);
         }
         fragmentTransaction.commit();
@@ -93,7 +91,6 @@ public abstract class AbstractAuthenticationView extends AppCompatActivity
 
     //-------------Basic UI Controllers--------------
 
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void showError() {
         if (currentFragment instanceof BasicCodeActionsFragment)
@@ -114,7 +111,6 @@ public abstract class AbstractAuthenticationView extends AppCompatActivity
         view.bringToFront();
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void hideError() {
         if (currentFragment instanceof BasicCodeActionsFragment)
@@ -155,12 +151,12 @@ public abstract class AbstractAuthenticationView extends AppCompatActivity
     }
 
     @Override
-    public AuthenticationFragment getFragment() {
+    public AbstractAuthenticationFragment getFragment() {
         return this.currentFragment;
     }
 
     @Override
-    public void setFragment(AuthenticationFragment fragment) {
+    public void setFragment(AbstractAuthenticationFragment fragment) {
         this.currentFragment = fragment;
     }
 }

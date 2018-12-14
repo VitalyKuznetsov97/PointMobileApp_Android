@@ -43,22 +43,30 @@ public class LaunchViewPresenter implements LaunchViewPresenterInterface {
     }
 
     @Override
+    public boolean mayStartHttpRequest() {
+        return true;
+    }
+
+    @Override
     public void onResponse(PostModel postModel) {
-        currentView.stopTimer();
-        if (postModel.getStatus()){
-            PostPayload payload = postModel.getPayload();
-            if (payload.getStatus())
-                currentView.goToHomeActivity(postModel);
-            else
-                currentView.goToHomeActivity(payload.getMessage());
+        if (currentView != null && postModel != null) {
+            currentView.stopTimer();
+            if (postModel.getStatus()) {
+                PostPayload payload = postModel.getPayload();
+                if (payload.getStatus())
+                    currentView.goToHomeActivity(postModel);
+                else
+                    currentView.goToHomeActivity(payload.getMessage());
+            } else
+                currentView.goToHomeActivity(postModel.getMessage());
         }
-        else
-            currentView.goToHomeActivity(postModel.getMessage());
     }
 
     @Override
     public void onFailure(String errorMessage) {
-        currentView.stopTimer();
-        currentView.goToHomeActivityOnFailure(errorMessage);
+        if (currentView != null) {
+            currentView.stopTimer();
+            currentView.goToHomeActivity(errorMessage);
+        }
     }
 }

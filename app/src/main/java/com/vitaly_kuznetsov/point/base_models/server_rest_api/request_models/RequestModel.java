@@ -15,7 +15,7 @@ public class RequestModel {
 
     // Setter Methods
 
-    public void setPayload(RequestPayload payloadObject) {
-        this.payload = payloadObject;
+    public void setPayload(RequestPayload payload) {
+        this.payload = payload;
     }
 }

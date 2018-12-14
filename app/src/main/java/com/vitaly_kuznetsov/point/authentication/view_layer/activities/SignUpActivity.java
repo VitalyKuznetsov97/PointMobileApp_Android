@@ -1,6 +1,5 @@
 package com.vitaly_kuznetsov.point.authentication.view_layer.activities;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -89,7 +88,6 @@ public class SignUpActivity extends AbstractAuthenticationView implements BasicU
         textView.setText(textId);
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void showError() {
         super.showError();
@@ -97,7 +95,6 @@ public class SignUpActivity extends AbstractAuthenticationView implements BasicU
             nextButton.setActivated(true);
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void hideError() {
         super.hideError();
