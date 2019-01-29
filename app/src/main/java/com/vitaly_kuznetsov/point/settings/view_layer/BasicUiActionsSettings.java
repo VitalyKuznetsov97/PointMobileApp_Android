@@ -17,10 +17,10 @@ public interface BasicUiActionsSettings {
     void showAlertDialog(int alertType);
     void hideKeyboard();
     void showProgressBar();
-    void hideProgressBar();
 
-    //Show or remove Fragment
+    //Show, save or remove Fragment
     void showFragments();
+    void saveFragmentsState();
 
     //Getters and Setters
     ArrayList<Fragment> getFragments();

@@ -76,6 +76,7 @@ public abstract class AbstractAuthenticationView extends AppCompatActivity
     public void goToMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override
@@ -87,6 +88,7 @@ public abstract class AbstractAuthenticationView extends AppCompatActivity
         intent.putExtra("Postmodel", intentJson);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        finish();
     }
 
     //-------------Basic UI Controllers--------------

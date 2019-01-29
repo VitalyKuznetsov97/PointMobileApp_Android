@@ -80,7 +80,7 @@ public class SendCodeAuthenticationFragment extends AbstractAuthenticationFragme
 
     @Override
     public boolean isReadyToProgress() {
-        return toggleButton.isChecked() && editText.getText().length() == 6;
+        return toggleButton.isChecked() && editText.getText().length() >= 5;
     }
 
     //--------------Error text manipulations----------------

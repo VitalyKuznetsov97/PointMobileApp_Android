@@ -25,7 +25,7 @@ public class RequestPayload {
         payload.setPhone(userDataModel.getPhone());
         payload.setSms(userDataModel.getSms());
         payload.setNickname(userDataModel.getNickname());
-        payload.setMyAge(String.valueOf(userDataModel.getMyAge()));
+        payload.setMyAge(String.valueOf(userDataModel.getMyAgeTimeStamp()));
         payload.setMyGender(String.valueOf(userDataModel.getMyGender()));
         payload.setYourAge(userDataModel.getYourAgeString());
         payload.setYourGender(String.valueOf(userDataModel.getYourGender()));
@@ -63,7 +63,8 @@ public class RequestPayload {
 
         payload.setToken(userDataModel.getToken());
         payload.setNickname(userDataModel.getNickname());
-        payload.setMyAge(String.valueOf(userDataModel.getMyAge()));
+        payload.setMyBio(userDataModel.getMyBio());
+        payload.setMyAge(String.valueOf(userDataModel.getMyAgeTimeStamp()));
         payload.setMyGender(String.valueOf(userDataModel.getMyGender()));
         payload.setYourAge(userDataModel.getYourAgeString());
         payload.setYourGender(String.valueOf(userDataModel.getYourGender()));

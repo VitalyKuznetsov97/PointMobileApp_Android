@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.vitaly_kuznetsov.point.R;
 import com.vitaly_kuznetsov.point.base_models.custom_views.CheckableImageView;
+import com.vitaly_kuznetsov.point.base_models.reusable_fragments.CustomDialog;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.Data;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostModel;
 import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostPayload;
@@ -21,7 +22,6 @@ import com.vitaly_kuznetsov.point.home.presenter_layer.HomeViewPresenter;
 import com.vitaly_kuznetsov.point.home.view_layer.fragments.ChatPreviewEmptyFragment;
 import com.vitaly_kuznetsov.point.home.view_layer.fragments.SettingsFragment;
 import com.vitaly_kuznetsov.point.home.view_layer.interfaces.BasicUiActionsHome;
-import com.vitaly_kuznetsov.point.home.view_layer.fragments.ChatPreviewFragment;
 import com.vitaly_kuznetsov.point.search.view_layer.SearchFragment;
 
 import java.text.ParseException;
@@ -57,16 +57,12 @@ public class HomeActivity extends AppCompatActivity implements BasicUiActionsHom
             UserData userData = data.getUserData();
             userDataModel.setNickname(userData.getNickname());
             userDataModel.setMyGender(Integer.parseInt(userData.getMyGender()));
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
-            try {
-                userDataModel.setMyAge(dateFormat.parse(userData.getMyAge()));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            userDataModel.setMyAgeTimeStamp(Long.parseLong(userData.getMyAge()));
             userDataModel.setMyBio(userData.getMyBio());
             userDataModel.setYourGender(Integer.parseInt(userData.getYourGender()));
             userDataModel.setYourAgeString(userData.getYourAge());
-            userDataModel.setToken(data.getToken());
+            if (!userDataModel.getToken().equals(""))
+                userDataModel.setToken(userDataModel.getToken());
             ModelHandler.changeUserDataModel(userDataModel);
         }
         else if (error != null)
@@ -119,7 +115,7 @@ public class HomeActivity extends AppCompatActivity implements BasicUiActionsHom
         showFrag(new SearchFragment());
     }
 
-    private void showFrag(Fragment fragment){
+    public void showFrag(Fragment fragment){
         if (currentFragment == null || currentFragment.getClass() != fragment.getClass()) {
             currentFragment = fragment;
 
@@ -148,5 +144,12 @@ public class HomeActivity extends AppCompatActivity implements BasicUiActionsHom
     @Override
     public void setCurrentFragment(Fragment fragment) {
         currentFragment = fragment;
+    }
+
+    @Override
+    public void showAlertDialog(int alertType) {
+        CustomDialog customDialog = new CustomDialog();
+        customDialog.setAlert(alertType, homeViewPresenter);
+        customDialog.show(getSupportFragmentManager(), "Alert");
     }
 }

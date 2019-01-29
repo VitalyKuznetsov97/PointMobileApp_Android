@@ -25,7 +25,7 @@ public class UserDataModel {
         Date date = new Date();
         date.setTime(-1577934000000L);
         this.myAge = date;
-        myBio = "";
+        myBio = "Hello!";
         this.yourGender = 3;
         this.yourAge = new ArrayList<>();
         this.phone = "";
@@ -54,6 +54,14 @@ public class UserDataModel {
     }
 
     public void setMyAge(Date myAge) { this.myAge = myAge; }
+
+    public long getMyAgeTimeStamp() {
+        return myAge.getTime() / 1000L;
+    }
+
+    public void setMyAgeTimeStamp(long timeStamp) {
+        myAge = new Date(timeStamp * 1000L);
+    }
 
     public String getMyBio() {
         return myBio;

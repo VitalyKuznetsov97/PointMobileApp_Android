@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import com.google.gson.Gson;
 import com.vitaly_kuznetsov.point.R;
 import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BaseContract;
+import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BasicStateActionsFragment;
 import com.vitaly_kuznetsov.point.base_models.reusable_fragments.CustomDialog;
 import com.vitaly_kuznetsov.point.base_models.reusable_fragments.SignUpOneAuthenticationFragment;
 import com.vitaly_kuznetsov.point.base_models.reusable_fragments.SignUpTwoAuthenticationFragment;
@@ -69,9 +70,9 @@ public class SettingsActivity extends AppCompatActivity
         fragmentArrayList.add(new SignUpTwoAuthenticationFragment());
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.constraint_layout_user_card, fragmentArrayList.get(0));
-        fragmentTransaction.replace(R.id.constraint_layout_1, fragmentArrayList.get(1));
-        fragmentTransaction.replace(R.id.constraint_layout_2, fragmentArrayList.get(2));
+        fragmentTransaction.add(R.id.constraint_layout_user_card, fragmentArrayList.get(0));
+        fragmentTransaction.add(R.id.constraint_layout_1, fragmentArrayList.get(1));
+        fragmentTransaction.add(R.id.constraint_layout_2, fragmentArrayList.get(2));
         fragmentTransaction.commit();
     }
 
@@ -98,12 +99,6 @@ public class SettingsActivity extends AppCompatActivity
         progressDialog = new ProgressDialog(SettingsActivity.this);
         progressDialog.setMessage("Loading....");
         progressDialog.show();
-    }
-
-    @Override
-    public void hideProgressBar() {
-        progressDialog.cancel();
-        progressDialog = null;
     }
 
     //----------Lifecycle Actions-----------
@@ -176,5 +171,11 @@ public class SettingsActivity extends AppCompatActivity
     @Override
     public ArrayList<Fragment> getFragments() {
         return fragmentArrayList;
+    }
+
+    @Override
+    public void saveFragmentsState() {
+        for (Fragment fragment : fragmentArrayList)
+            ((BasicStateActionsFragment) fragment).saveFragmentState();
     }
 }

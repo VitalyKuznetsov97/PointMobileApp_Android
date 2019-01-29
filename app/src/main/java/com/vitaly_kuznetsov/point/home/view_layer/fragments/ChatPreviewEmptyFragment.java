@@ -39,17 +39,18 @@ public class ChatPreviewEmptyFragment extends Fragment implements BasicFragmentI
     @Override
     public void onResume() {
         super.onResume();
-        currentPresenter.onMessagePreviewOpened();
+        //currentPresenter.onMessagePreviewOpened();
     }
 
     @Override
     public void init(View view) {
-        HomeActivity homeActivity = (HomeActivity) getActivity();
+        /*HomeActivity homeActivity = (HomeActivity) getActivity();
         currentPresenter = Objects.requireNonNull(homeActivity).getCurrentPresenter();
         currentPresenter.attachView((BaseContract.View) getActivity());
-
-        textView = view.findViewById(R.id.text_description_2);
+        */
         mainLayout = view.findViewById(R.id.constraint_layout_main);
+        textView = view.findViewById(R.id.text_description_2);
+        showLayout();
     }
 
     @Override
@@ -57,12 +58,14 @@ public class ChatPreviewEmptyFragment extends Fragment implements BasicFragmentI
         mainLayout.setAlpha(1);
         textView.setPaintFlags(textView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
+        /*
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 currentPresenter.onMessagePreviewOpened();
             }
         });
+        */
     }
 
     @Override

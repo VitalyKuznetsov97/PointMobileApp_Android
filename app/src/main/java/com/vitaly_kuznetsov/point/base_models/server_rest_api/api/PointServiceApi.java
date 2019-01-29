@@ -11,19 +11,19 @@ public interface PointServiceApi {
 
     //--------------Authentication---------------
 
-    @POST("/registration/checkphone")
+    @POST("/registration/checkPhone")
     Call<PostModel> registrationCheckPhone(@Body RequestModel requestModel);
 
-    @POST("/registration/createaccount")
+    @POST("/registration/createAccount")
     Call<PostModel> registrationCreateAccount(@Body RequestModel requestModel);
 
-    @POST("/login/checkphone")
+    @POST("/login/checkPhone")
     Call<PostModel> loginCheckPhone(@Body RequestModel requestModel);
 
-    @POST("/login/submitsms")
+    @POST("/login/submitSMS")
     Call<PostModel> loginSubmitSms(@Body RequestModel requestModel);
 
-    @POST("/login/checktoken")
+    @POST("/login/checkToken")
     Call<PostModel> loginCheckToken(@Body RequestModel requestModel);
 
     //---------------Home------------------
@@ -33,6 +33,6 @@ public interface PointServiceApi {
 
     //---------------Settings------------------
 
-    @POST("/profile/editprofile")
+    @POST("/profile/edit")
     Call<PostModel> profileEditProfile(@Body RequestModel requestModel);
 }

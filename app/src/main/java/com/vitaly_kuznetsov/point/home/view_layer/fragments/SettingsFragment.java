@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import com.vitaly_kuznetsov.point.R;
 import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BasicFragmentInterface;
 import com.vitaly_kuznetsov.point.base_models.reusable_fragments.UserCardFragment;
-import com.vitaly_kuznetsov.point.home.view_layer.interfaces.BasicHomeFragment;
 import com.vitaly_kuznetsov.point.settings.view_layer.SettingsActivity;
 
 import java.util.Objects;

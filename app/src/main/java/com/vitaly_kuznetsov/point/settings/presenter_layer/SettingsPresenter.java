@@ -55,8 +55,11 @@ public class SettingsPresenter
             currentView.goToHomeActivity();
         }
         else if (alertType == SAVE_ALERT){
-            if (mayStartHttpRequest())
+            if (mayStartHttpRequest()) {
+                currentView.saveFragmentsState();
+                ModelHandler.changeUserDataModel(userDataModel);
                 ProfileEditProfileRequestController.getInstance().start(this);
+            }
             else
                 currentView.showAlertDialog(ERROR_ALERT);
         }
@@ -94,11 +97,11 @@ public class SettingsPresenter
     @Override
     public void onResponse(PostModel postModel) {
         if (currentView != null) {
-            currentView.hideProgressBar();
             if (postModel.getStatus()) {
                 PostPayload payload = postModel.getPayload();
-                if (payload.getStatus())
-                    currentView.goToHomeActivity(postModel);
+                if (payload.getStatus()) {
+                    currentView.goToHomeActivity();
+                }
                 else
                     currentView.goToHomeActivity(payload.getMessage());
             } else
@@ -109,7 +112,6 @@ public class SettingsPresenter
     @Override
     public void onFailure(String errorMessage) {
         if (currentView != null) {
-            currentView.hideProgressBar();
             currentView.goToHomeActivity(errorMessage);
         }
     }

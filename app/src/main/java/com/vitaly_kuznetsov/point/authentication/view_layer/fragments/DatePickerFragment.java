@@ -26,6 +26,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
                 this, 1, 1, 2000);
         datePickerDialog.getDatePicker().setMinDate(-1577934000000L);
         datePickerDialog.getDatePicker().setMaxDate(new Date().getTime() - 568024668000L);
+        datePickerDialog.getDatePicker().updateDate( 2000, 1, 1);
         return datePickerDialog;
     }
 

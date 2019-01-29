@@ -10,4 +10,6 @@ public interface BasicUiActionsHome {
     Fragment getCurrentFragment();
     void setCurrentFragment(Fragment fragment);
 
+    void showAlertDialog(int alertType);
+
 }

@@ -7,7 +7,7 @@ public class BasicRetrofitBuilder {
 
     private static Retrofit retrofit;
     private static final String BASE_URL =
-            "http://ec2-52-31-168-119.eu-west-1.compute.amazonaws.com";
+            "https://point-backend.com";
 
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {

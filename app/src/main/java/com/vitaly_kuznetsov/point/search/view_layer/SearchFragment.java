@@ -19,12 +19,20 @@ import android.widget.TextView;
 
 import com.vitaly_kuznetsov.point.R;
 import com.vitaly_kuznetsov.point.base_models.custom_views.PointMainButton;
+import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BaseContract;
 import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BasicFragmentInterface;
+import com.vitaly_kuznetsov.point.base_models.reusable_fragments.CustomDialog;
+import com.vitaly_kuznetsov.point.home.view_layer.interfaces.BasicUiActionsHome;
+import com.vitaly_kuznetsov.point.home.view_layer.interfaces.ChatPreviewFragmentInterface;
+import com.vitaly_kuznetsov.point.search.presenter_layer.SearchFragmentPresenter;
+import com.vitaly_kuznetsov.point.search.presenter_layer.SearchFragmentPresenterInterface;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Predicate;
@@ -47,6 +55,8 @@ public class SearchFragment extends Fragment implements BasicFragmentInterface, 
 
     private Disposable disposableInterval;
 
+    private SearchFragmentPresenter presenter;
+
     //--------------Lifecycle Actions----------------
 
     @Override
@@ -58,20 +68,24 @@ public class SearchFragment extends Fragment implements BasicFragmentInterface, 
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-
-        if (pointMainButton.isChecked()) {
-            pointMainButton.setChecked(false);
-        }
-
+    public void onStop() {
+        super.onStop();
+        pointMainButton.setChecked(false);
         pointMainButton.stopAnimation();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.detachView();
+        presenter = null;
     }
 
     //--------------Initialize Fragment upon creation----------------
 
     @Override
     public void init(View view) {
+
         pointMainButton = view.findViewById(R.id.point_main_button);
 
         ringView = view.findViewById(R.id.ring_view);
@@ -82,28 +96,17 @@ public class SearchFragment extends Fragment implements BasicFragmentInterface, 
         searchText = view.findViewById(R.id.text_description_0);
         fragmentLayout = view.findViewById(R.id.constraint_layout_0);
         imageViewArrayList = new ArrayList<>();
-        pointMainButton.setOnCheckedChangeListener(checkedChangeListener());
+        pointMainButton.setOnCheckedChangeListener((compoundButton, b) -> presenter.onMainButtonCheckedChanged(b));
 
         context = view.getContext();
+
+        presenter = new SearchFragmentPresenter();
+        presenter.attachView(this);
     }
 
     @Override
     public boolean isReadyToProgress() {
         return true;
-    }
-
-    private CompoundButton.OnCheckedChangeListener checkedChangeListener(){
-        return new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
-                if (checked){
-
-                }
-                else {
-
-                }
-            }
-        };
     }
 
     @Override
@@ -116,6 +119,11 @@ public class SearchFragment extends Fragment implements BasicFragmentInterface, 
         imageViewArrayList.clear();
 
         searchText.setText(getResources().getText(R.string.search_description_0));
+    }
+
+    @Override
+    public void showAlertDialog(int alertType) {
+        ((BasicUiActionsHome) Objects.requireNonNull(getActivity())).showAlertDialog(alertType);
     }
 
     @Override
@@ -139,42 +147,37 @@ public class SearchFragment extends Fragment implements BasicFragmentInterface, 
             fragmentLayout.addView(expandableView);
         }
 
-        Predicate<Long> isLessThanFive = new Predicate<Long>() {
-            @Override
-            public boolean test(Long seconds) {
-                return seconds < 5;
-            }
+        Predicate<Long> isLessThanFive = seconds -> seconds < 5;
+
+        final Consumer<Long> createRing = attempt -> {
+            ScaleAnimation animation =
+                    new ScaleAnimation(1.0F, RING_FINAL_WIDTH_MULTIPLIER, 1.0F, RING_FINAL_WIDTH_MULTIPLIER,
+                            Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            AlphaAnimation alphaAnimation = new AlphaAnimation(0.6F, 0);
+
+            animation.setRepeatCount(Animation.INFINITE);
+            alphaAnimation.setRepeatCount(Animation.INFINITE);
+
+            AnimationSet animationSet = new AnimationSet(true);
+            animationSet.addAnimation(animation);
+            animationSet.addAnimation(alphaAnimation);
+            animationSet.setDuration(animationDuration);
+            animationSet.setRepeatMode(Animation.RESTART);
+            animationSet.setInterpolator(new LinearInterpolator());
+
+            int i = attempt.intValue();
+
+            imageViewArrayList.get(i).startAnimation(animationSet);
         };
 
-        final Consumer<Long> createRing = new Consumer<Long>() {
-            @Override
-            public void accept(Long attempt) {
-                ScaleAnimation animation =
-                        new ScaleAnimation(1.0F, RING_FINAL_WIDTH_MULTIPLIER, 1.0F, RING_FINAL_WIDTH_MULTIPLIER,
-                                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-                AlphaAnimation alphaAnimation = new AlphaAnimation(0.6F, 0);
-
-                animation.setRepeatCount(Animation.INFINITE);
-                alphaAnimation.setRepeatCount(Animation.INFINITE);
-
-                AnimationSet animationSet = new AnimationSet(true);
-                animationSet.addAnimation(animation);
-                animationSet.addAnimation(alphaAnimation);
-                animationSet.setDuration(animationDuration);
-                animationSet.setRepeatMode(Animation.RESTART);
-                animationSet.setInterpolator(new LinearInterpolator());
-
-                int i = attempt.intValue();
-
-                imageViewArrayList.get(i).startAnimation(animationSet);
-            }
-        };
-
-        Observable<Long> observable = Observable.interval(0, duration, TimeUnit.MILLISECONDS)
+        Observable<Long> observable = Observable.interval(0, duration, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
                 .takeWhile(isLessThanFive).doOnNext(createRing);
 
-        disposableInterval = observable.subscribe();
+        disposableInterval = observable.subscribe(success -> System.out.println("Disposable interval: " + success),
+                Throwable::printStackTrace);
 
         searchText.setText("");
     }
+
+
 }
