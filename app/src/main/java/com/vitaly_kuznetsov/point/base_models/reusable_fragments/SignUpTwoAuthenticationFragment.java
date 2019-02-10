@@ -187,11 +187,23 @@ public class SignUpTwoAuthenticationFragment extends AbstractAuthenticationFragm
             this.userDataModel.setYourGender(2);
 
         ArrayList<String> agesArrayList = new ArrayList<>();
-        if (allAgeToggleButton.isChecked())
+        if (allAgeToggleButton.isChecked() ||
+                ageToggleButtonArrayList.get(0).isChecked() && ageToggleButtonArrayList.get(4).isChecked())
             agesArrayList.add(String.valueOf(allAgeToggleButton.getText()));
         else {
-            for (ToggleButton button : ageToggleButtonArrayList)
-                if(button.isChecked()) agesArrayList.add(String.valueOf(button.getText()));
+            int lowest = -1;
+            int highest = 0;
+            for (ToggleButton button : ageToggleButtonArrayList) {
+                if (button.isChecked() && lowest == -1)
+                    lowest = ageToggleButtonArrayList.indexOf(button);
+                else if (button.isChecked())
+                    highest = ageToggleButtonArrayList.indexOf(button);
+            }
+            for (int i = lowest; i <= highest; i++) {
+                ToggleButton button = ageToggleButtonArrayList.get(i);
+                button.setChecked(true);
+                agesArrayList.add(String.valueOf(button.getText()));
+            }
         }
 
         this.userDataModel.setYourAge(agesArrayList);

@@ -6,10 +6,8 @@ import com.vitaly_kuznetsov.point.home.presenter_layer.HomeViewPresenter;
 
 public interface BasicUiActionsHome {
 
-    HomeViewPresenter getCurrentPresenter();
     Fragment getCurrentFragment();
-    void setCurrentFragment(Fragment fragment);
 
-    void showAlertDialog(int alertType);
+    void showAlertDialog(int alertType, String Message);
 
 }

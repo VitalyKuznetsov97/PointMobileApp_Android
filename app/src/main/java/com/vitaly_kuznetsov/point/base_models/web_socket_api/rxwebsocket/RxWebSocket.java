@@ -117,7 +117,7 @@ public class RxWebSocket {
         disposables.add(connectionDisposable);
     }
 
-    public synchronized Single<Boolean> sendMessage(@NonNull Gson gson, @Nullable Object payload) {
+    public synchronized Single<Boolean> sendMessage(@Nullable Object payload) {
         return Single.fromCallable(() -> {
             if (webSocket != null) {
                 String jsonBody = new Gson().toJson(payload);

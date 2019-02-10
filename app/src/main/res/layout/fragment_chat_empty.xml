@@ -5,10 +5,7 @@
     android:id="@+id/constraint_layout_main"
 
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:alpha="0"
-
-    tools:context=".messages_preview.view_layer.ChatPreviewFragment">
+    android:layout_height="match_parent">
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"

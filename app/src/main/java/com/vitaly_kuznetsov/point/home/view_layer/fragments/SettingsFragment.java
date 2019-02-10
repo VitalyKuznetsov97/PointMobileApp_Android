@@ -40,12 +40,9 @@ public class SettingsFragment extends Fragment implements BasicFragmentInterface
     @Override
     public void init(View view) {
         ImageView imageView = view.findViewById(R.id.pencil);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), SettingsActivity.class);
-                startActivity(intent);
-            }
+        imageView.setOnClickListener(view1 -> {
+            Intent intent = new Intent(view1.getContext(), SettingsActivity.class);
+            startActivity(intent);
         });
     }
 

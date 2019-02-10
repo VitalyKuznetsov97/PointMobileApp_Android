@@ -13,7 +13,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
 
         android:background="@color/colorDescriptionGrey"
         android:id="@+id/divider_0"
@@ -28,8 +28,9 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="1:0.197333"
+        android:layout_height="wrap_content"
+        android:minHeight="74dp"
+        android:maxHeight="90dp"
 
         android:id="@+id/constraint_layout_1"
         android:background="@drawable/user_file_card"
@@ -40,43 +41,29 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-        <android.support.constraint.ConstraintLayout
+        <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:alpha="0.3"
             app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHorizontal_weight="0.2226"
 
             android:layout_marginTop="6dp"
             android:layout_marginStart="15dp"
             android:layout_marginBottom="5dp"
-            android:id="@+id/constraint_layout_picture"
-            android:background="@drawable/female_frame"
+            android:id="@+id/image_view_layout_picture"
+            android:background="@drawable/male_background_pic"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
-
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:scaleX="0.95"
-                android:scaleY="0.95"
-                android:alpha="0.3"
-
-                android:id="@+id/user_avatar"
-                android:src="@drawable/female_background_pic"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription" />
-
-        </android.support.constraint.ConstraintLayout>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/linear_layout_info"
+            tools:ignore="ContentDescription" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:layout_constraintHorizontal_weight="0.7773"
 
             android:id="@+id/linear_layout_info"
             android:orientation="vertical"
@@ -84,7 +71,7 @@
             android:layout_marginEnd="26dp"
 
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/constraint_layout_picture"
+            app:layout_constraintLeft_toRightOf="@id/image_view_layout_picture"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" >
 
@@ -105,7 +92,7 @@
                 app:autoSizeTextType="uniform" />
 
             <TextView
-                android:id="@+id/bio_edit_text"
+                android:id="@+id/message_body"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"

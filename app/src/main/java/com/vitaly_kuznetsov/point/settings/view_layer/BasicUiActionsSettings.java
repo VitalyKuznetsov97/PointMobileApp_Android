@@ -10,7 +10,6 @@ public interface BasicUiActionsSettings {
 
     //Intents
     void goToHomeActivity();
-    void goToHomeActivity(PostModel postModel);
     void goToHomeActivity(String errorText);
 
     //Show or hide buttons

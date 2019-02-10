@@ -10,7 +10,6 @@ import com.vitaly_kuznetsov.point.base_models.user_data_model.model.UserDataMode
 public final class ModelHandler{
 
     private static UserDataModel model;
-    private static Gson gson;
     private static SharedPreferences sharedPreferences;
 
     public static UserDataModel getInstance(Context context) {
@@ -23,7 +22,7 @@ public final class ModelHandler{
         sharedPreferences = context.getSharedPreferences
                 (UserDataModel.PREFERENCES_FILE, Context.MODE_PRIVATE);
 
-        gson = new Gson();
+        Gson gson = new Gson();
         String json;
 
         if (!sharedPreferences.contains(UserDataModel.PREFERENCES_DATA_STRING)) {
@@ -37,6 +36,7 @@ public final class ModelHandler{
     }
 
     public static String changeUserDataModel(UserDataModel userDataModel){
+        Gson gson = new Gson();
         String json = gson.toJson(userDataModel);
 
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();

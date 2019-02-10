@@ -15,7 +15,7 @@ import com.vitaly_kuznetsov.point.settings.view_layer.BasicUiActionsSettings;
 
 import java.util.ArrayList;
 
-import static com.vitaly_kuznetsov.point.base_models.reusable_fragments.CustomDialog.ERROR_ALERT;
+import static com.vitaly_kuznetsov.point.base_models.reusable_fragments.CustomDialog.EMPTY_FIELD;
 import static com.vitaly_kuznetsov.point.base_models.reusable_fragments.CustomDialog.EXIT_ALERT;
 import static com.vitaly_kuznetsov.point.base_models.reusable_fragments.CustomDialog.SAVE_ALERT;
 
@@ -61,7 +61,7 @@ public class SettingsPresenter
                 ProfileEditProfileRequestController.getInstance().start(this);
             }
             else
-                currentView.showAlertDialog(ERROR_ALERT);
+                currentView.showAlertDialog(EMPTY_FIELD);
         }
     }
 

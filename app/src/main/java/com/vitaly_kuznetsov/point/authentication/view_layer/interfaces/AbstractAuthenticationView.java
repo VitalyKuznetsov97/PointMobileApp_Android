@@ -103,12 +103,7 @@ public abstract class AbstractAuthenticationView extends AppCompatActivity
         }
 
         View view = findViewById(R.id.wait_for_touch_view);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                currentPresenter.onAfterError();
-            }
-        });
+        view.setOnClickListener(view1 -> currentPresenter.onAfterError());
         view.setVisibility(View.VISIBLE);
         view.bringToFront();
     }
@@ -131,12 +126,7 @@ public abstract class AbstractAuthenticationView extends AppCompatActivity
     public void showTryAgainTextView() {
         TextView tryAgainTextView = findViewById(R.id.try_again_text_view_0);
         tryAgainTextView.setAlpha(1);
-        tryAgainTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                currentPresenter.onTryAgainTextViewClicked();
-            }
-        });
+        tryAgainTextView.setOnClickListener(view -> currentPresenter.onTryAgainTextViewClicked());
     }
 
     @Override

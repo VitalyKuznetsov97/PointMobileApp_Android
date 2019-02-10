@@ -3,15 +3,13 @@ package com.vitaly_kuznetsov.point.settings.view_layer;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import com.google.gson.Gson;
 import com.vitaly_kuznetsov.point.R;
 import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BaseContract;
 import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BasicStateActionsFragment;
@@ -19,7 +17,6 @@ import com.vitaly_kuznetsov.point.base_models.reusable_fragments.CustomDialog;
 import com.vitaly_kuznetsov.point.base_models.reusable_fragments.SignUpOneAuthenticationFragment;
 import com.vitaly_kuznetsov.point.base_models.reusable_fragments.SignUpTwoAuthenticationFragment;
 import com.vitaly_kuznetsov.point.base_models.reusable_fragments.UserCardFragment;
-import com.vitaly_kuznetsov.point.base_models.server_rest_api.post_models.PostModel;
 import com.vitaly_kuznetsov.point.home.view_layer.activities.HomeActivity;
 import com.vitaly_kuznetsov.point.settings.presenter_layer.SettingsPresenter;
 
@@ -32,7 +29,6 @@ public class SettingsActivity extends AppCompatActivity
     private SettingsPresenter presenter;
     private FragmentManager fragmentManager;
     private ArrayList<Fragment> fragmentArrayList;
-    private ProgressDialog progressDialog;
 
     //----------Change of View State-------------
 
@@ -42,19 +38,9 @@ public class SettingsActivity extends AppCompatActivity
 
         showFragments();
 
-        findViewById(R.id.save_icon).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.onSaveIconClicked();
-            }
-        });
+        findViewById(R.id.save_icon).setOnClickListener(view -> presenter.onSaveIconClicked());
 
-        findViewById(R.id.go_back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.onBackPressed();
-            }
-        });
+        findViewById(R.id.go_back).setOnClickListener(view -> presenter.onBackPressed());
 
     }
 
@@ -96,7 +82,7 @@ public class SettingsActivity extends AppCompatActivity
 
     @Override
     public void showProgressBar() {
-        progressDialog = new ProgressDialog(SettingsActivity.this);
+        ProgressDialog progressDialog = new ProgressDialog(SettingsActivity.this);
         progressDialog.setMessage("Loading....");
         progressDialog.show();
     }
@@ -136,18 +122,6 @@ public class SettingsActivity extends AppCompatActivity
     @Override
     public void goToHomeActivity() {
         Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    @Override
-    public void goToHomeActivity(PostModel postModel) {
-        Gson gson = new Gson();
-        String intentJson = gson.toJson(postModel);
-
-        Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra("Postmodel", intentJson);
-
         startActivity(intent);
         finish();
     }

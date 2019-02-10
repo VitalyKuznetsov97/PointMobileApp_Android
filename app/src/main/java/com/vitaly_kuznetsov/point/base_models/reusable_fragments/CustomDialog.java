@@ -1,7 +1,6 @@
 package com.vitaly_kuznetsov.point.base_models.reusable_fragments;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -24,17 +23,14 @@ public class CustomDialog extends DialogFragment {
     private int title;
     private int message;
     private int alertType;
-    private BaseContract.Presenter viewPresenter;
 
-    public CustomDialog() {
-        this.alertType = 0;
-        this.title = R.string.alert_title_0;
-        this.message = R.string.alert_text_0;
-    }
+    private String messageNotDefault;
+    private BaseContract.Presenter viewPresenter;
 
     public void setAlert(int alertType, BaseContract.Presenter presenter) {
         this.alertType = alertType;
         this.viewPresenter = presenter;
+        messageNotDefault = null;
 
         if (alertType == SAVE_ALERT) {
             this.title = R.string.alert_title_0;
@@ -54,6 +50,12 @@ public class CustomDialog extends DialogFragment {
         }
     }
 
+    public void setAlert(int alertType, BaseContract.Presenter presenter, String message) {
+        setAlert(alertType, presenter);
+        if (alertType == ERROR_ALERT) this.messageNotDefault = "Following Error occurred: " + "\n" + message;
+        else this.messageNotDefault = message;
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -62,6 +64,7 @@ public class CustomDialog extends DialogFragment {
         builder.setTitle(title)
                 .setMessage(message)
                 .setNegativeButton(R.string.cancel_button, (dialog, id) -> dialog.cancel());
+        if (messageNotDefault != null) builder.setMessage(messageNotDefault);
 
         if (alertType == ERROR_ALERT)
             builder.setNegativeButton("Ok", (dialog, id) -> dialog.cancel());

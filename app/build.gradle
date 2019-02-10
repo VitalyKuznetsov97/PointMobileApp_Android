@@ -41,5 +41,7 @@ dependencies {
     implementation 'nl.littlerobots.rxlint:rxlint:1.7.2'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.squareup.okio:okio:1.14.0'
+    implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.2.1'
+
     testImplementation 'junit:junit:4.12'
 }

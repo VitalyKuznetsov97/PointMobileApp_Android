@@ -1,7 +1,6 @@
 package com.vitaly_kuznetsov.point.base_models.user_data_model.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 
 public class UserDataModel {
@@ -80,12 +79,16 @@ public class UserDataModel {
     }
 
     public String getYourAgeString() {
-        StringBuilder age = new StringBuilder();
-        for (int i = 0; i < yourAge.size(); i++){
-            if (i != 0) age.append(",");
-            age.append(yourAge.get(i));
+        if (yourAge.contains("All ages"))
+            return "18-99";
+        else {
+            String lowest = yourAge.get(0).substring(0, 2);
+            String highest;
+            if (yourAge.contains("46+")) highest = "99";
+            else highest = yourAge.get(yourAge.size() - 1).substring(3, 5);
+
+            return lowest + "-" + highest;
         }
-        return age.toString();
     }
 
     public ArrayList<String> getYourAge() { return yourAge; }
@@ -93,8 +96,46 @@ public class UserDataModel {
     public void setYourAge(ArrayList<String> yourAge) { this.yourAge = yourAge; }
 
     public void setYourAgeString(String yourAgeString) {
-        String[] ages = yourAgeString.split(",");
-        this.yourAge = new ArrayList<>(Arrays.asList(ages));
+        String[] agesLowHigh;
+        if (yourAgeString.contains("-"))
+            agesLowHigh = yourAgeString.split("-");
+        else
+            agesLowHigh = yourAgeString.split("–");
+
+        String lowest = agesLowHigh[0];
+        String highest = agesLowHigh[1];
+        int low, high;
+
+        switch (lowest) {
+            case "23" : low = 1; break;
+            case "28" : low = 2; break;
+            case "36" : low = 3; break;
+            case "46" : low = 4; break;
+            default: low = 0; break;
+        }
+
+        switch (highest) {
+            case "22" : high = 0; break;
+            case "27" : high = 1; break;
+            case "35" : high = 2; break;
+            case "45" : high = 3; break;
+            default: high = 4; break;
+        }
+
+        this.yourAge = new ArrayList<>();
+        if (low == 0 && high == 4) yourAge.add("All ages");
+        else {
+            ArrayList<String> list = new ArrayList<>();
+            list.add("18–22");
+            list.add("23–27");
+            list.add("28–35");
+            list.add("36–45");
+            list.add("46+");
+            list.add("All ages");
+
+            for (int i = low; i <= high; i++)
+                yourAge.add(list.get(i));
+        }
     }
 
     public String getPhone() { return phone; }

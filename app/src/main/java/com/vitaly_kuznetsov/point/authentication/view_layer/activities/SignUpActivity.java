@@ -52,19 +52,8 @@ public class SignUpActivity extends AbstractAuthenticationView implements BasicU
         changeActivityTextView.setPaintFlags
                 (changeActivityTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
-        changeActivityTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                currentPresenter.onChangeActivityClicked();
-            }
-        });
-
-        goBackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                currentPresenter.onGoBackClicked();
-            }
-        });
+        changeActivityTextView.setOnClickListener(view -> currentPresenter.onChangeActivityClicked());
+        goBackButton.setOnClickListener(view -> currentPresenter.onGoBackClicked());
 
         currentPresenter.onNextFragmentClicked();
     }

@@ -16,7 +16,10 @@ import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BasicFragmentInt
 import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BasicModelActionsInterface;
 import com.vitaly_kuznetsov.point.base_models.mvp_base_contract.BasicStateActionsFragment;
 import com.vitaly_kuznetsov.point.base_models.user_data_model.model.UserDataModel;
+import com.vitaly_kuznetsov.point.home.presenter_layer.HomeViewPresenter;
 import com.vitaly_kuznetsov.point.home.view_layer.activities.HomeActivity;
+import com.vitaly_kuznetsov.point.search.view_layer.MatchFragment;
+import com.vitaly_kuznetsov.point.settings.view_layer.SettingsActivity;
 
 import java.util.Objects;
 
@@ -34,8 +37,13 @@ public class UserCardFragment extends Fragment implements BasicFragmentInterface
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        int layoutId = container.getId() == R.id.constraint_layout_user_card ?
-                R.layout.fragment_user_card : R.layout.fragment_user_card_horizontal;
+        int layoutId;
+
+        switch (container.getId()){
+            case R.id.constraint_layout_user_card : layoutId = R.layout.fragment_user_card; break;
+            case R.id.constraint_layout_user_card_matched : layoutId = R.layout.fragment_user_card_matched; break;
+            default: layoutId = R.layout.fragment_user_card_horizontal; break;
+        }
 
         View view = inflater.inflate(layoutId, container, false);
         init(view);
@@ -51,15 +59,23 @@ public class UserCardFragment extends Fragment implements BasicFragmentInterface
         userAvatar = view.findViewById(R.id.user_avatar);
         userNameTextView = view.findViewById(R.id.text_name);
         userBioEditText = view.findViewById(R.id.bio_edit_text);
-        phoneNumberTextView = view.findViewById(R.id.text_phone);
 
-        if (getActivity() instanceof BaseContract.View) {
-            BaseContract.Presenter presenter = ((BaseContract.View) getActivity()).getPresenter();
-            this.userDataModel = ((BasicModelActionsInterface) presenter).getUserDataModel();
+        if (getActivity() instanceof HomeActivity) {
+            Fragment currentActivityFragment = ((HomeActivity) Objects.requireNonNull(getActivity())).getCurrentFragment();
+
+            if (currentActivityFragment instanceof MatchFragment) {
+                MatchFragment fragment = (MatchFragment) currentActivityFragment;
+                this.userDataModel = Objects.requireNonNull(fragment).getPresenter().getUserDataModel();
+            } else {
+                BaseContract.Presenter presenter = ((BaseContract.View) Objects.requireNonNull(getActivity())).getPresenter();
+                this.userDataModel = ((HomeViewPresenter) presenter).getUserDataModel();
+                phoneNumberTextView = view.findViewById(R.id.text_phone);
+            }
         }
-        else {
-            HomeActivity homeActivity = (HomeActivity) getHost();
-            this.userDataModel = Objects.requireNonNull(homeActivity).getUserDataModel();
+        else if(getActivity() instanceof SettingsActivity) {
+            BaseContract.Presenter presenter = ((BaseContract.View) Objects.requireNonNull(getActivity())).getPresenter();
+            this.userDataModel = ((BasicModelActionsInterface) presenter).getUserDataModel();
+            phoneNumberTextView = view.findViewById(R.id.text_phone);
         }
 
         setViewsFromUserDataModel();
@@ -79,7 +95,7 @@ public class UserCardFragment extends Fragment implements BasicFragmentInterface
 
         userNameTextView.setText(userDataModel.getNickname());
         userBioEditText.setText(userDataModel.getMyBio());
-        phoneNumberTextView.setText(userDataModel.getPhone());
+        if (phoneNumberTextView != null) phoneNumberTextView.setText(userDataModel.getPhone());
     }
 
     //--------------Save Fragment data, if Fragment is being--------------

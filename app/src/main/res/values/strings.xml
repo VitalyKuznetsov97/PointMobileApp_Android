@@ -86,10 +86,12 @@
     <string name="alert_title_1">Exit</string>
     <string name="alert_title_2">Error!</string>
     <string name="alert_title_3">Empty fields</string>
+    <string name="alert_title_4">Hey! Point Info:</string>
     <string name="alert_text_0">Do you want to save the changes?</string>
     <string name="alert_text_1">Do you want to exit? "\n"Changes will not be applied.</string>
     <string name="alert_text_2">Some Error occurred!</string>
-    <string name="alert_text_3">Some fields might be empty! "\n"Please, fill them before saving the changes.</string>
+    <string name="alert_text_3">Some fields are empty! "\n"Please, fill them before saving the changes.</string>
+    <string name="alert_text_4">Your Match has disconnected!</string>
 
     <!-- chat activity -->
     <string name="message_hint">Type your message…</string>
@@ -100,5 +102,6 @@
     <string name="chat_fragment_description_0">Oops!</string>
     <string name="chat_fragment_description_1">You do not have any messages yet.</string>
     <string name="chat_fragment_description_2">Refresh Inbox</string>
+    <string name="text_view_chat_finished">This chat is finished for now!</string>
 
 </resources>

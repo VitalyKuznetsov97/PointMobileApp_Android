@@ -45,12 +45,9 @@ public class CheckableImageView extends android.support.v7.widget.AppCompatImage
 
     @Override
     public void setOnClickListener(final OnClickListener listener) {
-        View.OnClickListener onClickListener = new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toggle();
-                listener.onClick(v);
-            }
+        View.OnClickListener onClickListener = v -> {
+            toggle();
+            listener.onClick(v);
         };
         super.setOnClickListener(onClickListener);
     }
